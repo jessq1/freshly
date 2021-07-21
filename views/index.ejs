@@ -3,7 +3,7 @@
 
 <main>
   <div class="container-lg py-3">
-    <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+    <h4>Hi <%= user ? user.profile.name : "there.." %></h4>
     <% if (user?.profile.avatar) { %>
       <div>
         <img 
@@ -13,6 +13,16 @@
       </div>
     <% } %>
 
+    <div class="card shadow p-3 m-4 bg-body rounded" style="width: 18rem;">
+      <img src="/images/food/VEGETABLES/LEEK.png" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title text-center">Welcome to Freshly</h5>
+        <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <a href="/auth/google" class="btn btn-primary">
+          <img src="/images/auth/google/btn_google_dark_normal_ios.svg" alt="">
+          Log in with Google</a>
+      </div>
+    </div>
   </div>
 
 </main>

@@ -12,6 +12,8 @@ __Description__
 
 ## Technologies Used  
 
+## Assets  
+1. Illustrations from Eleanor Wright on Skibbl: https://weareskribbl.com/vegetables/
 
 ## Next Steps
 
