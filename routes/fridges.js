@@ -1,10 +1,10 @@
 import { Router } from 'express'
+import * as frigdeCtrl from '../controllers/fridges.js'
+
 
 export {
   router
 }
 
 const router = Router()
-router.get('/', function (req, res) {
-  res.render('index', { title: 'My Fridge', user: req.user ? req.user : null })
-})
+router.get('/', frigdeCtrl.index)
