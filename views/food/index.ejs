@@ -25,9 +25,8 @@
         <% food.forEach((food) => { %>
         <tr>
           <td><%= food.name %></td>
-          <!-- <td><%= food.fridgeTime.toLocaleDateString() %></td> -->
-          <!-- <td><%= food.freezeTime.toLocaleDateString() %></td> -->
-          <td><a class="link-secondary" href="/flights/<%= food._id %>">DETAILS</a></td>
+
+          <td><a class="link-secondary" href="/food/<%= food._id %>">DETAILS</a></td>
           <td>
             <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
               <button class="btn btn-outline-danger">X</button>
