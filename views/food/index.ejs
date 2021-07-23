@@ -4,38 +4,42 @@
 
 <main>
   <div class="container-lg py-3">
-
     <div class="d-flex bd-highlight">
       <h6 class="p-2 flex-grow-1 bd-highlight">Food Catalog</h6>
-      <h6 class="p-2 bd-highlight">Couldn't find your ingredient?</h6>
-      <a href="/food/new" class="p-2 ms-4 bd-highlight btn btn-outline-warning">ADD NEW FOOD DATA</a>
+      <% if (user) { %>
+        <h6 class="p-2 bd-highlight">Couldn't find your ingredient?</h6>
+        <a href="/food/new" class="p-2 ms-4 bd-highlight btn btn-outline-warning">ADD NEW FOOD DATA</a>
+        <% } %>
+      </div>
+      
+      <div 
+      class="row row-cols-1 row-cols-md-3 row-cols-lg-3 row-cols-xl-4 g5 g-sm-3 g-xxl-5 px-sm-5 px-4 py-3">
+      <% food.forEach((food) => { %>
+        <div class="col">
+          <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 17rem;">
+            <a class="text-decoration-none text-end" href="/food/<%= food._id %>">•••</a>
+                <img src="/images/food/VEGETABLES/CHILLI.png" class="card-img-top" alt="Placeholder Img">
+                <div class="card-body">
+                  <h5 class="card-title text-center"><%= food.name  %> </h5>
+                  <p class="mb-0 text-center">Fridge Time:</p>
+                  <p class="mb-1 text-center"><%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%></p>
+                  <p class="mb-0 text-center">Freeze Time:</p>
+                  <p class="mb-3 text-center"><%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></p>
+                  <% if (user) { %>
+                  <a class="btn btn-outline-primary text-decoration-none text-center" href="#">
+                    Add to My Shopping List</a>
+                    <% } %>
+                  </div>
+        </div>
+      </div>
+      <% }) %> 
     </div>
+    
 
-    <table class="table my-3" id="list">
-      <thead >
-        <tr>
-          <th>Food</th>
-          <th>Fridge Time</th>
-          <th>Freeze Time</th>
-          <th></th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% food.forEach((food) => { %>
-        <tr>
-          <td><%= food.name %></td>
-
-          <td><a class="link-secondary" href="/food/<%= food._id %>">DETAILS</a></td>
-          <td>
-            <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
+            <!-- <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
               <button class="btn btn-outline-danger">X</button>
-            </form>
-          </td>
-        </tr>
-        <% }) %>
-      </tbody>
-    </table>
+            </form> -->
+         
     
   </div>
 </main>
