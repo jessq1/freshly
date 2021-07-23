@@ -6,7 +6,31 @@
   <div class="container-lg py-3">
 
     <h6>Food Show Page</h6>
-    
+    <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
+      <div class="row">
+        <div class="col-10">
+           <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-outline-warning">X</button>
+            </form>
+        </div>
+        <div class="col">
+          <a class="text-decoration-none" href="/food/<%= food._id %>/edit">•••</a>
+        </div>
+      </div>
+      <img src="/images/food/VEGETABLES/CHILLI.png" class="card-img-top" alt="Placeholder Img">
+      <div class="card-body">
+        <h5 class="card-title text-center"><%= food.name  %> </h5>
+        <p class="mb-0 text-center">Fridge Time:</p>
+        <p class="mb-1 text-center"><%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%></p>
+        <p class="mb-0 text-center">Freeze Time:</p>
+        <p class="mb-3 text-center"><%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></p>
+      </div>
+        <% if (user) { %>
+          <a class="btn btn-outline-primary text-decoration-none text-center" href="#">
+            Add to My Shopping List</a>
+            <!-- <a class="text-decoration-none text-end" href="/food/<%= food._id %>">•••</a> -->
+            <% } %>
+  </div>
   </div>
 </main>
 

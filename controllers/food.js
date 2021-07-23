@@ -6,6 +6,9 @@ export {
     create,
     index,
     show,
+    deleteFood as delete,
+    edit,
+    update,
 }
 
 function newFood(req, res) {
@@ -48,4 +51,27 @@ function newFood(req, res) {
     })
   }
   
+  function deleteFood(req,res){
+    Food.findByIdAndDelete(req.params.id, function(err, food) {
+      res.redirect('/food')
+    })
+  }
+
+  function edit(req,res){
+    Food.findById(req.params.id, function(err, food) {
+      res.render('food/edit', {
+        food,
+        err,
+        title: "Edit Food"
+      })
+    })
+  }
   
+  function update(req,res){
+    for (let key in req.body) {
+      if (req.body[key] === '') delete req.body[key]
+    }
+    Food.findByIdAndUpdate(req.params.id, req.body, {new:true}, function(err, food) {
+      res.redirect(`/food/${food._id}`)
+    })
+  }
