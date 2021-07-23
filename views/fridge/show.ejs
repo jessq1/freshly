@@ -3,18 +3,34 @@
 
 <main>
   <div class="container-lg py-3">
-    My Fridge
-    <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 26rem;">
-      <div class="row">
-          <a href="/myfridge/<%= Profile._id %>/fridge ">Look into my Fridge</a>
+    <div 
+      class="row row-cols-1 row-cols-md-2 g5 g-sm-3 g-xxl-5 px-sm-5 px-4 py-3">
+      <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
+        <div style="height: 20rem;">
+            <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/fridge ">Look into my Fridge</a>
+        </div>
+        <div style="height: 15rem;">
+          <a href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
+        </div>
       </div>
-      <div class="row">
-        <a href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
+      
+      <div>
+        <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
+          <div style="height: 20rem;">
+            <a href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
+          </div>
+        </div>
+        <div class="card shadow p-3 mx-auto mt-5 bg-body rounded" style="width: 22rem;">
+          <div style="height: 15rem;">
+            <a href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
+          </div>
+        </div>
+
       </div>
-      <div class="row">
-        <a href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
-      </div>
+    
     </div>
+
+
   </div>
 
 </main>

@@ -36,7 +36,7 @@ export {
     Profile.findById(req.params.id, function(err, Profile) {
       res.render('fridge/showFreezer', {
         Profile: Profile,
-        title: 'My Fridge'
+        title: 'My Freezer'
       })
     })
   }
@@ -44,7 +44,7 @@ export {
     Profile.findById(req.params.id, function(err, Profile) {
       res.render('fridge/showList', {
         Profile: Profile,
-        title: 'My Fridge'
+        title: 'My Shopping List'
       })
     })
   }
