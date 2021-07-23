@@ -28,7 +28,7 @@
           <% if (user) { %>
             <li class="nav-item px-3">
               <a class="nav-link" 
-              href="/myfridge" <%- title === 'My Fridge' ? 'class="active"' : '' %>
+              href="/myfridge/<%=user.profile._id%>" <%- title === 'My Fridge' ? 'class="active"' : '' %>
             >My Fridge</a>
             </li>
             <% } %>

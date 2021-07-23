@@ -6,7 +6,10 @@ export {
 }
 
 const foodSchema = new Schema({
-    name: String,
+    name: {
+      type: String,
+      required:true,
+    },
     fridgeTime: Date,
     freezeTime: Date,
     inFridge: Boolean,

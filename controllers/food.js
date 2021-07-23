@@ -19,6 +19,7 @@ function newFood(req, res) {
       if (req.body[key] === '') delete req.body[key]
     }
     const food = new Food(req.body)
+    console.log(req.body)
     food.save(function(err) {
       if (err) {
         console.log(err)
@@ -39,13 +40,12 @@ function newFood(req, res) {
   
   function show(req, res) {
     Food.findById(req.params.id)
-    .populate('airport').exec(function(err, food) {
-      Destination.find({_id: {$nin: food.airport}}, function(err, destinations) {
-        res.render('food/show', {
-          title: 'Food Detail', 
-          food: food,
-          destinations: destinations
-        })
+    .then(food=>{
+      res.render('food/show', {
+        title: 'Food Detail', 
+        food: food,
       })
     })
   }
+  
+  

@@ -4,8 +4,27 @@
 
 <main>
   <div class="container-lg py-3">
-    <h2>New Food Data</h1>
-     
+      <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 20rem;">
+        <h5 class="mx-auto">New Food Data</h5>
+            <form action="/food" method="POST">
+            <!-- <img src="/images/food/VEGETABLES/CHILLI.png" class="card-img-top" alt="Placeholder Img"> -->
+            <div class="form-floating my-3">
+                <input type="String" class="form-control" id="floatingInput" name="name" placeholder="name">
+                <label for="floatingInput">Name</label>
+              </div>
+            <div class="form-floating my-3">
+                <input type="Date" class="form-control" id="floatingInput" name="fridgeTime" placeholder="fridgeTime">
+                <label for="floatingInput">Fridge Time</label>
+              </div>
+            <div class="form-floating my-3">
+                <input type="String" class="form-control" id="floatingInput" name="freezeTime" placeholder="freezeTime">
+                <label for="floatingInput">Freeze Time</label>
+              </div>
+                <button class="my-4 btn btn-outline-warning" type="submit">Add Food</button>
+            </div>
+            </form>
+          </div>
+    
     
   </div>
 </main>
