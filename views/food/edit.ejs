@@ -1,0 +1,49 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+
+<main>
+  <div class="container-lg py-3">
+      <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
+        <h5 class="mx-auto">Edit Food Data</h5>
+            <form action="/food/<%= food._id %>?_method=PUT" method="POST">
+            <img src="/images/food/VEGETABLES/CHILLI.png" class="card-img-top" alt="Placeholder Img">
+            <div class="form-floating my-3">
+                <input type="String" class="form-control" id="floatingInput" name="name" value="<%= food.name %> " disabled>
+                <label for="floatingInput">Name</label>
+              </div>
+              <label class="mx-1 my-1">Fridge Time</label>
+            <div class="form-floating mb-3">
+                <div class="input-group mb-3">
+                    <input type="Number" class="form-control" placeholder="Month" aria-label="Month" name="fridgeM" value="<%= food.fridgeM %>">
+                    <span class="input-group-text">M</span>
+                    <input type="Number" class="form-control" placeholder="Week" aria-label="Week" name="fridgeW" value="<%= food.fridgeW %>">
+                    <span class="input-group-text">W</span>
+                    <input type="Number" class="form-control" placeholder="Day" aria-label="Day" name="fridgeD" value="<%= food.fridgeD %>">
+                    <span class="input-group-text">D</span>
+                  </div>
+              </div>
+
+              <label class="mx-1 my-1">Freeze Time</label>
+              <div class="form-floating mb-3">
+                <div class="input-group mb-3">
+                    <input type="Number" class="form-control" placeholder="Month" aria-label="Month" name="freezeM" value="<%= food.freezeM %>">
+                    <span class="input-group-text">M</span>
+                    <input type="Number" class="form-control" placeholder="Week" aria-label="Week" name="freezeW" value="<%= food.freezeW %>">
+                    <span class="input-group-text">W</span>
+                    <input type="Number" class="form-control" placeholder="Day" aria-label="Day" name="freezeD" value="<%= food.freezeD %>">
+                    <span class="input-group-text">D</span>
+                  </div>
+              </div>
+
+                <button class="my-4 btn btn-outline-warning" type="submit">Update Food</button>
+            </div>
+            </form>
+          </div>
+    
+    
+  </div>
+</main>
+
+
+<%- include('../partials/footer') %>
