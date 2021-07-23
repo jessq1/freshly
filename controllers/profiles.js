@@ -1,5 +1,4 @@
 import { Profile } from '../models/profile.js'
-import { User } from '../models/user.js'
 
 export {
     show,

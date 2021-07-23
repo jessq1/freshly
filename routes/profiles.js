@@ -7,7 +7,12 @@ export {
 }
 
 const router = Router()
-router.get('/:id', profileCtrl.show)
-router.get('/:id/fridge', profileCtrl.showFridge)
-router.get('/:id/freezer', profileCtrl.showFreezer)
-router.get('/:id/list', profileCtrl.showList)
+router.get('/:id', isLoggedIn, profileCtrl.show)
+router.get('/:id/fridge', isLoggedIn, profileCtrl.showFridge)
+router.get('/:id/freezer', isLoggedIn, profileCtrl.showFreezer)
+router.get('/:id/list', isLoggedIn, profileCtrl.showList)
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) return next();
+  res.redirect("/auth/google");
+}

@@ -1,4 +1,6 @@
 import { Food } from '../models/food.js'
+import { Profile } from '../models/profile.js'
+
 import axios from 'axios'
 
 export {
@@ -9,8 +11,24 @@ export {
     deleteFood as delete,
     edit,
     update,
+    addToList,
 }
 
+function addToList(req, res) {
+  Profile.findById(req.user.profile._id)
+  .then(profile=>{
+    profile.list[0].food.push({_id:req.params.id})
+    console.log(profile.list[0])
+    profile.save()
+    .then(()=> {
+      res.redirect(`/food`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+  })
+}
 function newFood(req, res) {
     res.render('food/new', {
       title: "Add Food"
