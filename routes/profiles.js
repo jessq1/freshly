@@ -8,3 +8,6 @@ export {
 
 const router = Router()
 router.get('/:id', profileCtrl.show)
+router.get('/:id/fridge', profileCtrl.showFridge)
+router.get('/:id/freezer', profileCtrl.showFreezer)
+router.get('/:id/list', profileCtrl.showList)

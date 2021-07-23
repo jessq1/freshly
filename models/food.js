@@ -10,7 +10,6 @@ const foodSchema = new Schema({
       type: String,
       required:true,
     },
-    // fridgeTime: Date,
     fridgeM: {
       type: Number,
       default: 0,
@@ -35,7 +34,6 @@ const foodSchema = new Schema({
       type: Number,
       default: 0,
     },
-    // freezeTime: Date,
     inFridge: {
       type: Boolean,
       default: null,
@@ -47,6 +45,15 @@ const foodSchema = new Schema({
     freezerFriendly: {
       type: Boolean,
       default: true,
+    },
+    servings:{
+      type:Number,
+      default:0,
+      min:0,
+    },
+    purchaseDate:{
+      type:Date,
+      default:null,
     },
     freshness: Number,
   },{
