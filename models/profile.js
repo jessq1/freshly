@@ -26,6 +26,7 @@ const listSchema = new Schema({
 const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
+  bio: String,
   fridge: fridgeSchema,
   freezer: freezerSchema,
   list:[listSchema],

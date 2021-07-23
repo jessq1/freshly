@@ -7,12 +7,11 @@ export {
 
 const foodSchema = new Schema({
     name: String,
-    rawgId: Number,
-    released: Date,
-    imageUrl: String,
-    collectedBy: [{ type: Schema.Types.ObjectId, ref: "Profile" }],
-    // To be filled in later
-    // reviews: [reference GameReview],
+    fridgeTime: Date,
+    freezeTime: Date,
+    inFridge: Boolean,
+    inFreezer: Boolean,
+    freshness: Number,
   },{
     timestamps: true,
   });

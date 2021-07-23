@@ -1,12 +1,49 @@
 <%- include('../partials/html-head') %>
 <%- include('../partials/nav') %>
 
+
 <main>
   <div class="container-lg py-3">
-    Food Catalog
 
+    <div class="d-flex bd-highlight">
+      <h6 class="p-2 flex-grow-1 bd-highlight">Food Catalog</h6>
+      <h6 class="p-2 bd-highlight">Couldn't find your ingredient?</h6>
+      <a href="/food/new" class="p-2 ms-4 bd-highlight btn btn-outline-warning">ADD NEW FOOD DATA</a>
+    </div>
+    <!-- <h2 class="d-inline">Food Catalog</h1>
+      <h4 class="text-end">Couldn't find your ingredient?</h4>
+
+        <a href="/food/new" class="btn btn-outline-warning">ADD NEW FOOD DATA</a> -->
+
+    <table class="table my-3" id="list">
+      <thead >
+        <tr>
+          <th>Food</th>
+          <th>Fridge Time</th>
+          <th>Freeze Time</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% food.forEach((food) => { %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.fridgeTime.toLocaleDateString() %></td>
+          <td><%= food.freezeTime.toLocaleDateString() %></td>
+          <td><a class="link-secondary" href="/flights/<%= food._id %>">DETAILS</a></td>
+          <td>
+            <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
+              <button class="btn btn-outline-danger">X</button>
+            </form>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+    
   </div>
-
 </main>
+
 
 <%- include('../partials/footer') %>

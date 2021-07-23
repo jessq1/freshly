@@ -64,7 +64,7 @@ app.use(passUserToView)
 // router middleware
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
-app.use('/catalog', foodRouter)
+app.use('/food', foodRouter)
 app.use('/myfridge', profileRouter)
 
 
