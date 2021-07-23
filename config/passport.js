@@ -16,9 +16,16 @@ passport.use(
         if (user) {
           return done(null, user)
         } else {
+          const newFridge = new fridgeSchema()
+          const newFreezer = new freezerSchema()
+          const newlist = new listSchema()
+
           const newProfile = new Profile({
             name: profile.displayName,
             avatar: profile.photos[0].value,
+            fridge: newFridge,
+            freezer: newFreezer,
+            list: [newlist],
           })
           const newUser = new User({
             email: profile.emails[0].value,

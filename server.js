@@ -22,7 +22,7 @@ import('./config/passport.js')
 import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as foodRouter } from './routes/food.js'
-import { router as fridgeRouter } from './routes/fridges.js'
+import { router as profileRouter } from './routes/profiles.js'
 
 // view engine setup
 app.set(
@@ -65,7 +65,7 @@ app.use(passUserToView)
 app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/catalog', foodRouter)
-app.use('/myfridge', fridgeRouter)
+app.use('/myfridge', profileRouter)
 
 
 // catch 404 and forward to error handler
