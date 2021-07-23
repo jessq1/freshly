@@ -4,29 +4,43 @@
 <main>
   <div class="container-lg py-3">
     <div 
-      class="row row-cols-1 row-cols-md-2 g5 g-sm-3 g-xxl-5 px-sm-5 px-4 py-3">
-      <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
-        <div style="height: 20rem;">
-            <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/fridge ">Look into my Fridge</a>
-        </div>
-        <div style="height: 15rem;">
-          <a href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
-        </div>
-      </div>
-      
-      <div>
-        <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
-          <div style="height: 20rem;">
-            <a href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
-          </div>
-        </div>
-        <div class="card shadow p-3 mx-auto mt-5 bg-body rounded" style="width: 22rem;">
-          <div style="height: 15rem;">
-            <a href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
-          </div>
-        </div>
+      class="row">
+<div class="col-md-5">
+  <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
+    <div style="height: 25rem;">
+        <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/fridge ">Look into my Fridge</a>
+    </div>
+    <div style="height: 15rem;">
+      <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
+    </div>
+  </div>
 
+</div>
+
+<div class="col-md-2">
+  <div class="card shadow p-3 mx-auto bg-body rounded"></div>
+</div>
+<div class="col-md-1"></div>
+
+<div class="col-md-4">
+  <div>
+    <div class="card shadow p-3 mx-auto bg-body rounded">
+      <div style="height: 20rem;">
+
+        
+        <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
       </div>
+    </div>
+    <div class="card shadow p-3 mx-auto mt-5 bg-body rounded">
+      <div style="height: 15rem;">
+        <p class="text-center">Previous Shopping List</p>
+      </div>
+    </div>
+  </div>
+  
+</div>
+
+      
     
     </div>
 
