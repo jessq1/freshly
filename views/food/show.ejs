@@ -7,6 +7,7 @@
 
     <h6>Food Show Page</h6>
     <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
+      <% if (user) { %>
       <div class="row">
         <div class="col-10">
            <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
@@ -17,6 +18,8 @@
           <a class="text-decoration-none" href="/food/<%= food._id %>/edit">Edit</a>
         </div>
       </div>
+      <% } %>
+
       <img src="/images/food/VEGETABLES/CHILLI.png" class="card-img-top" alt="Placeholder Img">
       <div class="card-body">
         <h5 class="card-title text-center"><%= food.name  %> </h5>

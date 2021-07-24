@@ -17,7 +17,7 @@ export {
 function addToList(req, res) {
   Profile.findById(req.user.profile._id)
   .then(profile=>{
-    profile.list[0].food.push({_id:req.params.id})
+    profile.list[profile.list.length].food.push({_id:req.params.id})
     console.log(profile.list[0])
     profile.save()
     .then(()=> {
