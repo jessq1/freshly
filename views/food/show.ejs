@@ -29,9 +29,8 @@
         <p class="mb-3 text-center"><%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></p>
       </div>
         <% if (user) { %>
-          <a class="btn btn-outline-primary text-decoration-none text-center" href="#">
+          <a class="btn btn-outline-primary text-decoration-none text-center" href="/food/<%= food._id %>/addtolist" >
             Add to My Shopping List</a>
-            <!-- <a class="text-decoration-none text-end" href="/food/<%= food._id %>">•••</a> -->
             <% } %>
   </div>
   </div>
