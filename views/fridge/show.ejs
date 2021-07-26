@@ -26,9 +26,36 @@
   <div>
     <div class="card shadow p-3 mx-auto bg-body rounded">
       <div style="height: 20rem;">
+        <h6 class="text-center">My Shopping List</h6>
+        <table class="table my-3" id="list">
+          <thead >
+            <tr>
+              <th>ITEM</th>
+              <th>FRIDGE TIME</th>
+              <th>FREEZER TIME</th>
+              <th>SERVINGS</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% Profile.list[Profile.list.length-1].food.forEach((food) => {  %>
+              <tr>
+                <td><%= food.name %></td>
+              <td><%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%></td>
+              <td><%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></td>
+              <td><%= food.servings %></td>
+              <td>
+                <!-- <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
+                  <button class="btn btn-outline-danger">X</button>
+                </form> -->
+              </td>
         
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
         
-        <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
+        <a class="btn btn-outline-primary m-3" href="/myfridge/<%= Profile._id %>/list ">Look into my List</a>
       </div>
     </div>
     <div class="card shadow p-3 mx-auto mt-5 bg-body rounded">
