@@ -53,11 +53,28 @@ export {
   }
 
   function submitList(req, res) {
-  console.log(req.body)
-    // Profile.findById(req.params.id, function(err, Profile) {
-    //   res.render('fridge/showFreezer', {
-    //     Profile: Profile,
-    //     title: 'My Freezer'
+    console.log(req.body)
+
+    if(req.body[inFridge] == 'true'){
+      Profile
+    .findById(req.params.id)
+    .populate({
+    path: 'list', 
+    model: 'list',
+    })
+    .exec(function(err, profile){
+      profile.fridge.food.push(req.body)
+      profile.save(function(err) {
+        res.redirect(`/myfridge/${profile._id}/list`)
+      })
+    });
+    } else {
+      console.log(req.body)
+    }
+    // Profile.findById(req.params.id, function(err, profile) {
+    //   profile.food.push(req.body)
+    //   profile.save(function(err) {
+    //     res.redirect(`/myfridge/${profile._id}/list`)
     //   })
     // })
   }
