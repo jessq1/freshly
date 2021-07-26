@@ -48,7 +48,7 @@ const foodSchema = new Schema({
     },
     servings:{
       type:Number,
-      default:0,
+      default:1,
       min:0,
     },
     purchaseDate:{

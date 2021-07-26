@@ -11,6 +11,9 @@ router.get('/:id', isLoggedIn, profileCtrl.show)
 router.get('/:id/fridge', isLoggedIn, profileCtrl.showFridge)
 router.get('/:id/freezer', isLoggedIn, profileCtrl.showFreezer)
 router.get('/:id/list', isLoggedIn, profileCtrl.showList)
+router.put('/:id', isLoggedIn, profileCtrl.submitList)
+
+
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();
