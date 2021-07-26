@@ -1,0 +1,55 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+  <div class="container-lg py-3">
+    
+    <h6>Food Show Page</h6>
+    <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 30rem;">
+      
+<!-- <p><%= profile.list[profile.list.length-1].food %> </p> -->
+
+<table class="table my-3" id="list">
+  <thead >
+    <tr>
+      <th>FRIDGE</th>
+      <th>FREEZER</th>
+      <th>ITEM</th>
+      <th>SERVINGS</th>
+      <th></th>
+    </tr>
+  </thead>
+  <form action="">
+  <tbody>
+    <% profile.list[profile.list.length-1].food.forEach((food) => {  %>
+    <tr>
+      <td>0</td>
+      <td>0</td>
+      <td><%= food.name %></td>
+      <td>0</td>
+      <td>
+        <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
+          <button class="btn btn-outline-danger">X</button>
+        </form>
+      </td>
+    </tr>
+    <% }) %>
+  </tbody>
+</form>
+</table>
+<!-- 
+<% profile.list[profile.list.length-1].food.forEach((food) => { %>
+  <p>Name: <%= food.name %> </p>
+  <p>Fridge Time: <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> </p>
+  <p>Freeze Time: <%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%> </p>
+
+  <% }) %>  -->
+
+        
+  </div>
+
+  </div>
+
+</main>
+
+<%- include('../partials/footer') %>
