@@ -19,8 +19,8 @@ passport.use(
           const newProfile = new Profile({
             name: profile.displayName,
             avatar: profile.photos[0].value,
-            fridge: {food:[]},
-            freezer: {food:[]},
+            fridgeFood: [],
+            freezerFood: [],
             list: [{food:[]}],
           })
           const newUser = new User({

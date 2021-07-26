@@ -9,12 +9,29 @@ export {
 }
 
   function show(req, res) {
-    Profile.findById(req.params.id, function(err, Profile) {
-      res.render('fridge/show', {
-        Profile: Profile,
-        title: 'My Fridge'
-      })
+    Profile
+    .findById(req.params.id)
+    .populate({
+    path: 'list', 
+    model: 'list',
+    populate: {
+      path: 'food',
+      model: 'Food'
+    }
     })
+    .exec(function(err, Profile){
+    res.render('fridge/show', {
+            title: 'My Fridge', 
+            Profile: Profile,
+          })
+    });
+
+    // Profile.findById(req.params.id, function(err, Profile) {
+    //   res.render('fridge/show', {
+    //     Profile: Profile,
+    //     title: 'My Fridge'
+    //   })
+    // })
   }
   function showFridge(req, res) {
     Profile.findById(req.params.id, function(err, Profile) {
