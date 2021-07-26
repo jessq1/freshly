@@ -53,7 +53,7 @@ export {
   }
 
   function submitList(req, res) {
-console.log(req.body)
+  console.log(req.body)
     // Profile.findById(req.params.id, function(err, Profile) {
     //   res.render('fridge/showFreezer', {
     //     Profile: Profile,

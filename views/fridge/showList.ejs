@@ -22,7 +22,7 @@
   <tbody>
     <% profile.list[profile.list.length-1].food.forEach((food) => {  %>
       <tr>
-      <form action="/myfridge/<%= profile._id %>?_method=PUT" method="POST">
+      <form class="shopListForms"action="/myfridge/<%= profile._id %>" method="POST">
       <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="true" aria-label="..." name="inFridge"></td>
       <td><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="true" aria-label="..." name="inFreezer"></td>
       <td><input type="String" class="form-control"  value="<%= food.name %>" name="name" readonly="readonly"></td>
@@ -40,6 +40,7 @@
   </tbody>
 </table>
 
+<button class="btn btn-outline-warning" id="submitForms">Submit</button>
 
         
   </div>
@@ -47,5 +48,7 @@
   </div>
 
 </main>
+
+<script src="/javascripts/submitList.js"></script>
 
 <%- include('../partials/footer') %>
