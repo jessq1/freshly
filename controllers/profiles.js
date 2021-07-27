@@ -27,13 +27,6 @@ export {
             Profile: Profile,
           })
     });
-
-    // Profile.findById(req.params.id, function(err, Profile) {
-    //   res.render('fridge/show', {
-    //     Profile: Profile,
-    //     title: 'My Fridge'
-    //   })
-    // })
   }
   function showFridge(req, res) {
     Profile.findById(req.params.id, function(err, Profile) {
@@ -72,7 +65,6 @@ export {
   }
 
   function submitList(req, res) {
-
     if(req.body.inFridge == 'true'){
       Profile
     .findById(req.params.id)

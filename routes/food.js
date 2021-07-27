@@ -18,6 +18,8 @@ router.get("/:id/edit",foodCtrl.edit)
 router.put("/:id",foodCtrl.update)
 
 router.get('/:id/addtolist', isLoggedIn, foodCtrl.addToList)
+router.delete('/:id/addtolist', isLoggedIn, foodCtrl.removeFromList)
+
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) return next();

@@ -12,13 +12,28 @@ export {
     edit,
     update,
     addToList,
+    removeFromList,
+}
+
+function removeFromList(req, res) {
+  Profile.findById(req.user.profile._id)
+  .then(profile=>{
+    profile.list[profile.list.length-1].food.pull({_id:req.params.id})
+    profile.save()
+    .then(()=> {
+      res.redirect(`/myfridge/${profile._id}/list`)
+    })
+    .catch(err => {
+      console.log(err)
+      res.redirect('/')
+    })
+  })
 }
 
 function addToList(req, res) {
   Profile.findById(req.user.profile._id)
   .then(profile=>{
     profile.list[profile.list.length-1].food.push({_id:req.params.id})
-    console.log(profile.list[0])
     profile.save()
     .then(()=> {
       res.redirect(`/food`)
@@ -29,6 +44,8 @@ function addToList(req, res) {
     })
   })
 }
+
+
 function newFood(req, res) {
     res.render('food/new', {
       title: "Add Food"
