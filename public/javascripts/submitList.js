@@ -1,4 +1,3 @@
-console.log('check')
 const submitBtn = document.getElementById('submitForms');
 const listForms = document.getElementsByClassName('shopListForms')
 

@@ -19,9 +19,9 @@
 
 <div class="col-md-2">
   <div class="card shadow p-3 mx-auto bg-body rounded">
-    <div style="height: 25rem;">
+    <div id='body' style="height: 25rem;">
       <% Profile.fridgeFood.forEach((food) => { %> 
-      <p> <%= food.name %></p>
+      <p id=``> <%= food.name + food.purchaseDate.getDate() %></p>
       <% }) %>
     </div>
     <div style="height: 15rem;">
@@ -85,5 +85,6 @@
   </div>
 
 </main>
+<script src="/javascripts/renderDate.js"></script>
 
 <%- include('../partials/footer') %>
