@@ -72,7 +72,11 @@ const myFoodSchema = new Schema({
   foodId:{
     type:String,
   },
-  freshness: Number,
+  freshness: {
+    type: Number,
+    min: 0,
+    max: 100,
+  },
 },{
   timestamps: true,
 });

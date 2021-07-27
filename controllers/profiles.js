@@ -9,6 +9,8 @@ export {
 }
 
   function show(req, res) {
+    let today = new Date()
+
     Profile
     .findById(req.params.id)
     .populate({
@@ -22,12 +24,19 @@ export {
     }
     })
     .exec(function(err, Profile){
+      Profile.fridgeFood.forEach((food) => {
+        food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
+      })
+      Profile.freezerFood.forEach((food) => {
+        food.freshness=((((today-food.purchaseDate)/86400000)/(food.freezeM*30+food.freezeW*7+food.freezeD))*100).toFixed()
+      })
     res.render('fridge/show', {
             title: 'My Fridge', 
             Profile: Profile,
           })
     });
   }
+
   function showFridge(req, res) {
     Profile.findById(req.params.id, function(err, Profile) {
       res.render('fridge/showFridge', {
