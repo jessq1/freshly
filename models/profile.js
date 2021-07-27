@@ -27,8 +27,8 @@ const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
   bio: String,
-  fridgeFood: [{type: Schema.Types.ObjectId, ref: 'Food'}],
-  freezerFood: [{type: Schema.Types.ObjectId, ref: 'Food'}],
+  fridgeFood: [],
+  freezerFood: [],
   list:[listSchema],
 }, {
   timestamps: true

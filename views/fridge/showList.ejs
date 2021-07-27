@@ -30,6 +30,14 @@
       <td><input type="number" class="form-control"  value="<%= food.servings %>" placeholder="1" name="servings"></td>
       <td>
         <input type="String" class="form-control"  value="<%= food._id %>" name="foodId" hidden>
+        <input type="Date" class="purchaseDate" name="purchaseDate"  value='<%  new Date().getDate()  %> ' id="purchaseDate" >
+        <input type="number" class="form-control"  value="<%= food.fridgeM %>" name="fridgeM" hidden>
+        <input type="number" class="form-control"  value="<%= food.fridgeW %>" name="fridgeW" hidden>
+        <input type="number" class="form-control"  value="<%= food.fridgeD %>" name="fridgeD" hidden>
+        <input type="number" class="form-control"  value="<%= food.freezeM %>" name="freezeM" hidden>
+        <input type="number" class="form-control"  value="<%= food.freezeW %>" name="freezeW" hidden>
+        <input type="number" class="form-control"  value="<%= food.freezeD %>" name="freezeD" hidden>
+
         <!-- <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
           <button class="btn btn-outline-danger">X</button>
         </form> -->
@@ -51,6 +59,18 @@
 
 </main>
 
+<script>
+
+  // var today = new Date();
+  
+  // var dateNow = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+  // const purchaseDates = document.getElementsByClassName("purchaseDate")
+  // console.log(purchaseDates)
+  // purchaseDates.forEach(el => {
+  //   el.value = dateNow
+  // });
+  // console.log(document.getElementsByClassName("purchaseDate").value)
+</script>
 <script src="/javascripts/submitList.js"></script>
 
 <%- include('../partials/footer') %>

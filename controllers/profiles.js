@@ -12,6 +12,8 @@ export {
     Profile
     .findById(req.params.id)
     .populate({
+      path: 'fridgeFood',
+      path: 'freezeFood',
     path: 'list', 
     model: 'list',
     populate: {
@@ -80,7 +82,23 @@ export {
     model: 'list',
     })
     .exec(function(err, profile){
-      profile.fridgeFood.push(req.body.foodId)
+      profile.fridgeFood.push(req.body)
+console.log(profile.list[profile.list.length-1].food)
+      // profile.list[profile.list.length-1].food.id(req.body.foodId).remove()
+      console.log(profile.fridgeFood)
+      profile.save(function(err) {
+        res.redirect(`/myfridge/${profile._id}/list`)
+      })
+    });
+    } else if (req.body.inFreezer == 'true'){
+      Profile
+    .findById(req.params.id)
+    .populate({
+    path: 'list', 
+    model: 'list',
+    })
+    .exec(function(err, profile){
+      profile.freezeFood.push(req.body.foodId)
       console.log(profile.fridgeFood)
       profile.save(function(err) {
         res.redirect(`/myfridge/${profile._id}/list`)
