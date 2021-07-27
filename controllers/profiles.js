@@ -72,7 +72,6 @@ export {
   }
 
   function submitList(req, res) {
-    // console.log(req.body.foodId)
 
     if(req.body.inFridge == 'true'){
       Profile
@@ -83,7 +82,7 @@ export {
     })
     .exec(function(err, profile){
       profile.fridgeFood.push(req.body)
-console.log(profile.list[profile.list.length-1].food)
+    console.log(profile.list[profile.list.length-1].food)
       // profile.list[profile.list.length-1].food.id(req.body.foodId).remove()
       console.log(profile.fridgeFood)
       profile.save(function(err) {
@@ -98,8 +97,8 @@ console.log(profile.list[profile.list.length-1].food)
     model: 'list',
     })
     .exec(function(err, profile){
-      profile.freezeFood.push(req.body.foodId)
-      console.log(profile.fridgeFood)
+      profile.freezeFood.push(req.body)
+    console.log(profile.list[profile.list.length-1].food)
       profile.save(function(err) {
         res.redirect(`/myfridge/${profile._id}/list`)
       })

@@ -11,7 +11,7 @@ router.get('/:id', isLoggedIn, profileCtrl.show)
 router.get('/:id/fridge', isLoggedIn, profileCtrl.showFridge)
 router.get('/:id/freezer', isLoggedIn, profileCtrl.showFreezer)
 router.get('/:id/list', isLoggedIn, profileCtrl.showList)
-router.post('/:id', isLoggedIn, profileCtrl.submitList)
+router.post('/:id/myfood', isLoggedIn, profileCtrl.submitList)
 
 
 
