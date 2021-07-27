@@ -34,14 +34,6 @@ const foodSchema = new Schema({
       type: Number,
       default: 0,
     },
-    inFridge: {
-      type: Boolean,
-      default: null,
-    },
-    inFreezer: {
-      type: Boolean,
-      default: null,
-    },
     freezerFriendly: {
       type: Boolean,
       default: true,
@@ -51,11 +43,6 @@ const foodSchema = new Schema({
       default:1,
       min:0,
     },
-    purchaseDate:{
-      type:Date,
-      default:null,
-    },
-    freshness: Number,
   },{
     timestamps: true,
   });

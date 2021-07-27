@@ -13,7 +13,7 @@ export {
     .findById(req.params.id)
     .populate({
       path: 'fridgeFood',
-      path: 'freezeFood',
+      path: 'freezerFood',
     path: 'list', 
     model: 'list',
     populate: {
@@ -89,7 +89,7 @@ export {
     model: 'list',
     })
     .exec(function(err, profile){
-      profile.freezeFood.push(req.body)
+      profile.freezerFood.push(req.body)
     console.log(profile.list[profile.list.length-1].food)
       profile.save(function(err) {
         res.redirect(`/myfridge/${profile._id}/list`)

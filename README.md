@@ -16,8 +16,9 @@ __Description__
 ## Next Steps
 
 
-## Assets  
+## References:  
 1. Illustrations from Eleanor Wright on Skibbl: https://weareskribbl.com/vegetables/
+2. Food Storage Data from foodsafety.gov: https://www.foodsafety.gov/keep-food-safe
 
 
 

@@ -19,9 +19,16 @@
 
 <div class="col-md-2">
   <div class="card shadow p-3 mx-auto bg-body rounded">
-    <% Profile.fridgeFood.forEach((food) => { %> 
-    <p> <%= food.name %></p>
-    <% }) %>
+    <div style="height: 25rem;">
+      <% Profile.fridgeFood.forEach((food) => { %> 
+      <p> <%= food.name %></p>
+      <% }) %>
+    </div>
+    <div style="height: 15rem;">
+      <% Profile.freezerFood.forEach((food) => { %> 
+        <p> <%= food.name %></p>
+        <% }) %>
+    </div>
   </div>
 </div>
 
