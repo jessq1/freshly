@@ -12,7 +12,6 @@ export {
 }
 
 function editFridge(req,res) {
-  console.log(req.query)
   Profile.findById(req.params.id, function(err, profile) {
     const foodItem = profile.fridgeFood.id(req.query.id)
     res.render('fridge/edit', {
@@ -25,7 +24,17 @@ function editFridge(req,res) {
 }
 
 function updateFridge(req,res) {
-  
+  let fId=req.body.id
+  let fservings=req.body.servings
+  console.log(fId)
+  console.log(fservings)
+  // for (let key in req.body) {
+  //   if (req.body[key] === '') delete req.body[key]
+  // }
+  // Profile.findById(req.params.id, function(err,profile){
+  //   profile.fridgeFood.id(req.body.id).servings = req.body.servings
+  //   res.redirect(`/myfridge/${profile._id}/fridge/edit`)
+  // })
 }
 
 function removeFromFridge(req,res){
