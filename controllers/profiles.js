@@ -28,13 +28,14 @@ function updateFridge(req,res) {
   let fservings=req.body.servings
   console.log(fId)
   console.log(fservings)
-  // for (let key in req.body) {
-  //   if (req.body[key] === '') delete req.body[key]
-  // }
-  // Profile.findById(req.params.id, function(err,profile){
-  //   profile.fridgeFood.id(req.body.id).servings = req.body.servings
-  //   res.redirect(`/myfridge/${profile._id}/fridge/edit`)
-  // })
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }
+  Profile.findById(req.params.id, function(err,profile){
+    profile.fridgeFood.id(fId).servings = fservings
+    profile.save(function(err) {
+    res.redirect(`/myfridge/${profile._id}/fridge/`)
+  })})
 }
 
 function removeFromFridge(req,res){
