@@ -1,0 +1,112 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+    <a href="/myfridge/<%=user.profile._id%>" class="m-1 btn btn-outline-warning"> << </a>
+  <div class="container-lg pb-3">
+    <div class="row">
+      <div class="col-lg-8">
+      <div class="row">
+      <div class="col">
+        <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 26rem;">
+          <div style="height: 25rem;">
+            <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
+          </div>
+        <div style="height: 15rem;">
+        </div>
+      </div>
+      </div>
+      <div class="col">
+        <div class="card shadow p-3 mx-auto bg-body rounded">
+
+          <div id='firdgeBody' style="height: 40rem;">
+            <div class="accordion" id="accordionExample">
+            <% Profile.freezerFood.forEach((food, index) => { %> 
+              <%  if(index==0){ %>                 
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button <%= food._id %> name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <%= food.name +" - "+food.freshness %>%
+                      <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item">
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      
+                      <strong>Servings: </strong> <%= food.servings %> <br>
+                      <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
+                      <strong>Typical Freezer Storage Time: </strong> <%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%> <br>
+                      <div class="row mt-3">
+                        <div class="col-9">
+                           <form action="/myfridge/<%=Profile._id%>/freezer?_method=DELETE" method="POST">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-danger">X</button>
+                            </form>
+                        </div>
+                        <div class="col">
+                          <form action="/myfridge/<%= Profile._id %>/freezer/edit" method="GET">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-primary">Edit</button>
+                            </form>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+                <% } else { %> 
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target='#text_<%=index%>' aria-expanded="true" aria-controls="collapseTwo">
+                        <%= food.name +" - "+food.freshness %>%
+                        <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item">
+                      </button>
+                    </h2>
+                    <div id='text_<%=index%>' class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>Servings: </strong> <%= food.servings %> <br>
+                        <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
+                        <strong>Typical Freezer Storage Time: </strong> <%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%> <br>
+                      <div class="row mt-3">
+                        <div class="col-9">
+                          <form action="/myfridge/<%=Profile._id%>/freezer?_method=DELETE" method="POST">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-danger">X</button>
+                            </form>
+                        </div>
+                        <div class="col">
+                          <form action="/myfridge/<%= Profile._id %>/freezer/edit" method="GET">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-primary">Edit</button>
+                            </form>                        
+                          </div>
+                      </div>  
+                    </div>
+                    </div>
+                  </div>
+                  <%}%> 
+                
+            <% }) %>
+          </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-4">
+    <div>
+  <div class="card shadow p-3 mx-auto bg-body rounded">
+    <div style="height: 20rem;">
+
+    </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+
+</main>
+
+<script src="/javascripts/showRecipe.js"></script>
+<%- include('../partials/footer') %>
