@@ -2,45 +2,46 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <div class="container-lg py-3">
-    <div 
-      class="row">
+  <div class="container-lg py-3 my-3">
+    <div class="row">
+<div class="col-lg-8">
+  <div class="row">
+    <div class="col">
+      <div class="card shadow p-3 my-2 bg-body rounded mx-auto" style="width: 25rem;">
+        <div style="height: 25rem;">
+            <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/fridge ">Look into my Fridge</a>
+        </div>
+        <div style="height: 15rem;">
+          <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
+        </div>
+      </div>
+    </div>
+  
+    <div class="col">
+      <div class="card shadow p-3 my-2 bg-body rounded  mx-auto" style="width: 15rem;">
+        <div id='body' style="height: 25rem;">
+          <% Profile.fridgeFood.forEach((food) => { %> 
+            <p class="mt-2 mb-0"> <%= food.name +" - "+food.freshness %>% </p>
+            <progress  max="100" value='<%= food.freshness %>'></progress>
+      
+          <% }) %>
+        </div>
+        <div style="height: 15rem;">
+          <% Profile.freezerFood.forEach((food) => { %> 
+            <p class="mt-2 mb-0"> <%= food.name +" - "+food.freshness %>% </p>
+            <progress  max="100" value='<%= food.freshness %>'></progress>
+            <% }) %>
+        </div>
+      </div>
+    </div>
 
-<div class="col-md-5">
-  <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
-    <div style="height: 25rem;">
-        <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/fridge ">Look into my Fridge</a>
-    </div>
-    <div style="height: 15rem;">
-      <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
-    </div>
   </div>
 
 </div>
 
-<div class="col-md-2">
-  <div class="card shadow p-3 mx-auto bg-body rounded">
-    <div id='body' style="height: 25rem;">
-      <% Profile.fridgeFood.forEach((food) => { %> 
-        <p class="mt-2 mb-0"> <%= food.name +" - "+food.freshness %>% </p>
-        <progress  max="100" value='<%= food.freshness %>'></progress>
-
-      <% }) %>
-    </div>
-    <div style="height: 15rem;">
-      <% Profile.freezerFood.forEach((food) => { %> 
-        <p class="mt-2 mb-0"> <%= food.name +" - "+food.freshness %>% </p>
-        <progress  max="100" value='<%= food.freshness %>'></progress>
-        <% }) %>
-    </div>
-  </div>
-</div>
-
-<div class="col-md-1"></div>
-
-<div class="col-md-4">
+<div class="col-lg-4">
   <div>
-    <div class="card shadow p-3 mx-auto bg-body rounded">
+    <div class="card shadow p-3 my-2 bg-body rounded">
       <div style="height: 20rem;">
         <h6 class="text-center">My Shopping List</h6>
         <table class="table my-3" id="list">
