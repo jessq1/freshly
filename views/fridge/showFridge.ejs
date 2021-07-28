@@ -20,7 +20,7 @@
         <div class="card shadow p-3 mx-auto bg-body rounded">
           <div id='firdgeBody' style="height: 40rem;">
             <% Profile.fridgeFood.forEach((food) => { %> 
-              <p class="mt-2 mb-0" id='<%= food.foodId %>' name='<%= food.name %>'> <%= food.name +" - "+food.freshness %>% </p>
+              <p class="mt-2 mb-0" id='<%= food._id %>' name='<%= food.name %>'> <%= food.name +" - "+food.freshness %>% </p>
               <progress  max="100" value='<%= food.freshness %>'></progress>
             <% }) %>
           </div>
@@ -28,6 +28,16 @@
       </div>
     </div>
   </div>
+
+  <div class="col-lg-4">
+    <div>
+  <div class="card shadow p-3 mx-auto bg-body rounded">
+    <div style="height: 20rem;">
+
+    </div>
+  </div>
+</div>
+</div>
 </div>
 </div>
 

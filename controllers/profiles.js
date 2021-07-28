@@ -51,6 +51,7 @@ export {
       })
     })
   }
+  
   function showFreezer(req, res) {
     Profile.findById(req.params.id, function(err, Profile) {
       res.render('fridge/showFreezer', {
