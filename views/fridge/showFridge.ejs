@@ -44,7 +44,6 @@
                             </form>
                         </div>
                         <div class="col">
-                          <!-- <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/fridge/edit">Edit</a> -->
                           <form action="/myfridge/<%= Profile._id %>/fridge/edit" method="GET">
                             <input type="string" name='id' value='<%= food._id %>' hidden>
                               <button class="btn btn-outline-primary">Edit</button>
@@ -58,26 +57,29 @@
                 <% } else { %> 
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
-                      <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#two" aria-expanded="true" aria-controls="collapseTwo">
+                      <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target='#text_<%=index%>' aria-expanded="true" aria-controls="collapseTwo">
                         <%= food.name +" - "+food.freshness %>%
                         <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item">
                       </button>
                     </h2>
-                    <div id="two" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div id='text_<%=index%>' class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
                         <strong>Servings: </strong> <%= food.servings %> <br>
-                      <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
-                      <strong>Typical Fridge Storage Time: </strong> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> <br>
+                        <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
+                        <strong>Typical Fridge Storage Time: </strong> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> <br>
                       <div class="row mt-3">
                         <div class="col-9">
-                           <form action="/myfridge/<%=Profile._id%>/fridge?_method=DELETE" method="POST">
+                          <form action="/myfridge/<%=Profile._id%>/fridge?_method=DELETE" method="POST">
                             <input type="string" name='id' value='<%= food._id %>' hidden>
                               <button class="btn btn-outline-danger">X</button>
                             </form>
                         </div>
                         <div class="col">
-                          <a class="btn btn-outline-primary" href="/myfridge/<%=Profile._id%>/fridge/edit">Edit</a>
-                        </div>
+                          <form action="/myfridge/<%= Profile._id %>/fridge/edit" method="GET">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-primary">Edit</button>
+                            </form>                        
+                          </div>
                       </div>  
                     </div>
                     </div>
