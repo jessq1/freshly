@@ -18,11 +18,44 @@
       </div>
       <div class="col">
         <div class="card shadow p-3 mx-auto bg-body rounded">
+
           <div id='firdgeBody' style="height: 40rem;">
-            <% Profile.fridgeFood.forEach((food) => { %> 
-              <p class="mt-2 mb-0" id='<%= food._id %>' name='<%= food.name %>'> <%= food.name +" - "+food.freshness %>% </p>
-              <progress  max="100" value='<%= food.freshness %>'></progress>
+            <div class="accordion" id="accordionExample">
+            <% Profile.fridgeFood.forEach((food, index) => { %> 
+              <%  if(index==0){ %>                 
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      <%= food.name +" - "+food.freshness %>%
+                      <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item">
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                    </div>
+                  </div>
+                </div>
+                <% } else { %> 
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                      <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        <%= food.name +" - "+food.freshness %>%
+                        <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item">
+                      </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                      <div class="accordion-body">
+                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      </div>
+                    </div>
+                  </div>
+                  <%}%> 
+              <!-- <p class="mt-2 mb-0" id='<%= food._id %>' name='<%= food.name %>'> <%= food.name +" - "+food.freshness %>% </p> -->
+              <!-- <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item"> -->
+                
             <% }) %>
+          </div>
           </div>
         </div>
       </div>
