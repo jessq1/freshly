@@ -52,6 +52,7 @@ function removeFromFridge(req,res){
 
   function show(req, res) {
     let today = new Date()
+    today.setUTCHours(0,0,0,0)
     Profile
     .findById(req.params.id)
     .populate({
@@ -80,9 +81,10 @@ function removeFromFridge(req,res){
 
   function showFridge(req, res) {
     let today = new Date()
+    today.setUTCHours(0,0,0,0)
     Profile.findById(req.params.id, function(err, Profile) {
       Profile.fridgeFood.forEach((food) => {
-        food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
+          food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
       })
       Profile.freezerFood.forEach((food) => {
         food.freshness=((((today-food.purchaseDate)/86400000)/(food.freezeM*30+food.freezeW*7+food.freezeD))*100).toFixed()
@@ -95,7 +97,15 @@ function removeFromFridge(req,res){
   }
   
   function showFreezer(req, res) {
+    let today = new Date()
+    today.setUTCHours(0,0,0,0)
     Profile.findById(req.params.id, function(err, Profile) {
+      Profile.fridgeFood.forEach((food) => {
+          food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
+      })
+      Profile.freezerFood.forEach((food) => {
+        food.freshness=((((today-food.purchaseDate)/86400000)/(food.freezeM*30+food.freezeW*7+food.freezeD))*100).toFixed()
+      })
       res.render('fridge/showFreezer', {
         Profile: Profile,
         title: 'My Freezer'
@@ -123,6 +133,7 @@ function removeFromFridge(req,res){
   }
 
   function submitList(req, res) {
+    console.log(req.body.purchaseDate)
     if(req.body.inFridge == 'true'){
       Profile
     .findById(req.params.id)
@@ -132,9 +143,7 @@ function removeFromFridge(req,res){
     })
     .exec(function(err, profile){
       profile.fridgeFood.push(req.body)
-    console.log(profile.list[profile.list.length-1].food)
-      // profile.list[profile.list.length-1].food.id(req.body.foodId).remove()
-      console.log(profile.fridgeFood)
+      profile.list[profile.list.length-1].food.pull({_id:req.body.foodId})
       profile.save(function(err) {
         res.redirect(`/myfridge/${profile._id}/list`)
       })
@@ -148,13 +157,13 @@ function removeFromFridge(req,res){
     })
     .exec(function(err, profile){
       profile.freezerFood.push(req.body)
-    console.log(profile.list[profile.list.length-1].food)
+      profile.list[profile.list.length-1].food.pull({_id:req.body.foodId})
       profile.save(function(err) {
         res.redirect(`/myfridge/${profile._id}/list`)
       })
     });
     } else {
-      console.log(req.body)
+      res.redirect(`/myfridge/${profile._id}/list`)
     }
 
     // Profile.findById(req.params.id, function(err, profile) {

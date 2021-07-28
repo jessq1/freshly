@@ -35,7 +35,7 @@
       <td> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> </td>
       <td> <%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></td>
       <td> 
-        <input type="Date" class="purchaseDate" name="purchaseDate"   id="purchaseDate" >
+        <input type="Date" class="purchaseDate" name="purchaseDate"   id="purchaseDate" required>
       </td>
       <td>
         <input type="String" class="form-control"  value="<%= food._id %>" name="foodId" hidden>
