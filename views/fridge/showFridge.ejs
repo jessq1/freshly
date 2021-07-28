@@ -44,7 +44,11 @@
                             </form>
                         </div>
                         <div class="col">
-                          <a class="btn btn-outline-primary" href="/food/<%= food._id %>/edit">Edit</a>
+                          <!-- <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/fridge/edit">Edit</a> -->
+                          <form action="/myfridge/<%= Profile._id %>/fridge/edit" method="GET">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-primary">Edit</button>
+                            </form>
                         </div>
                       </div>
                       
@@ -72,7 +76,7 @@
                             </form>
                         </div>
                         <div class="col">
-                          <a class="btn btn-outline-primary" href="/food/<%= food._id %>/edit">Edit</a>
+                          <a class="btn btn-outline-primary" href="/myfridge/<%=Profile._id%>/fridge/edit">Edit</a>
                         </div>
                       </div>  
                     </div>

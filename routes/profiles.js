@@ -13,6 +13,8 @@ router.get('/:id/freezer', isLoggedIn, profileCtrl.showFreezer)
 router.get('/:id/list', isLoggedIn, profileCtrl.showList)
 router.post('/:id/myfood', isLoggedIn, profileCtrl.submitList)
 router.delete('/:id/fridge', isLoggedIn, profileCtrl.removeFromFridge)
+router.get('/:id/fridge/edit', isLoggedIn, profileCtrl.editFridge)
+router.put('/:id/fridge', isLoggedIn, profileCtrl.updateFridge)
 
 
 

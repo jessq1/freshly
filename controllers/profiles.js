@@ -7,6 +7,25 @@ export {
     showList,
     submitList,
     removeFromFridge,
+    editFridge,
+    updateFridge
+}
+
+function editFridge(req,res) {
+  console.log(req.query)
+  Profile.findById(req.params.id, function(err, profile) {
+    const foodItem = profile.fridgeFood.id(req.query.id)
+    res.render('fridge/edit', {
+      profile,
+      foodItem,
+      err,
+      title: "Edit Profile"
+    })
+  })
+}
+
+function updateFridge(req,res) {
+  
 }
 
 function removeFromFridge(req,res){
