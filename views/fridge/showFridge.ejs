@@ -25,29 +25,57 @@
               <%  if(index==0){ %>                 
                 <div class="accordion-item">
                   <h2 class="accordion-header" id="headingOne">
-                    <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    <button <%= food._id %> name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                       <%= food.name +" - "+food.freshness %>%
                       <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item">
                     </button>
                   </h2>
                   <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                      <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                      
+                      <strong>Servings: </strong> <%= food.servings %> <br>
+                      <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
+                      <strong>Typical Fridge Storage Time: </strong> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> <br>
+                      <div class="row mt-3">
+                        <div class="col-9">
+                           <form action="/myfridge/<%=Profile._id%>/fridge?_method=DELETE" method="POST">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-danger">X</button>
+                            </form>
+                        </div>
+                        <div class="col">
+                          <a class="btn btn-outline-primary" href="/food/<%= food._id %>/edit">Edit</a>
+                        </div>
+                      </div>
+                      
                     </div>
                   </div>
                 </div>
                 <% } else { %> 
                   <div class="accordion-item">
                     <h2 class="accordion-header" id="headingTwo">
-                      <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                      <button id='<%= food._id %>' name='<%= food.name %>' class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#two" aria-expanded="true" aria-controls="collapseTwo">
                         <%= food.name +" - "+food.freshness %>%
                         <progress  max="100" value='<%= food.freshness %>'></progress><div class="accordion-item">
                       </button>
                     </h2>
-                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div id="two" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                       <div class="accordion-body">
-                        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                      </div>
+                        <strong>Servings: </strong> <%= food.servings %> <br>
+                      <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
+                      <strong>Typical Fridge Storage Time: </strong> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> <br>
+                      <div class="row mt-3">
+                        <div class="col-9">
+                           <form action="/myfridge/<%=Profile._id%>/fridge?_method=DELETE" method="POST">
+                            <input type="string" name='id' value='<%= food._id %>' hidden>
+                              <button class="btn btn-outline-danger">X</button>
+                            </form>
+                        </div>
+                        <div class="col">
+                          <a class="btn btn-outline-primary" href="/food/<%= food._id %>/edit">Edit</a>
+                        </div>
+                      </div>  
+                    </div>
                     </div>
                   </div>
                   <%}%> 

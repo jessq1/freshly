@@ -6,6 +6,19 @@ export {
     showFreezer,
     showList,
     submitList,
+    removeFromFridge,
+}
+
+function removeFromFridge(req,res){
+  const fId = req.body.id
+  console.log(fId)
+  Profile
+    .findById(req.params.id, function(err,profile){
+      profile.fridgeFood.id(fId).remove();
+      profile.save(function(err) {
+        res.redirect(`/myfridge/${profile._id}/fridge`)
+      })
+    })
 }
 
   function show(req, res) {
