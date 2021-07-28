@@ -18,9 +18,9 @@
       </div>
       <div class="col">
         <div class="card shadow p-3 mx-auto bg-body rounded">
-          <div id='body' style="height: 40rem;">
+          <div id='firdgeBody' style="height: 40rem;">
             <% Profile.fridgeFood.forEach((food) => { %> 
-              <p class="mt-2 mb-0"> <%= food.name +" - "+food.freshness %>% </p>
+              <p class="mt-2 mb-0" id='<%= food.foodId %>' name='<%= food.name %>'> <%= food.name +" - "+food.freshness %>% </p>
               <progress  max="100" value='<%= food.freshness %>'></progress>
             <% }) %>
           </div>
@@ -33,4 +33,5 @@
 
 </main>
 
+<script src="/javascripts/showRecipe.js"></script>
 <%- include('../partials/footer') %>
