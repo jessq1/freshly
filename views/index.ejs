@@ -1,7 +1,12 @@
 <%- include('./partials/html-head') %>
+<% if (!user) { %>
+  <link rel="stylesheet" href="/stylesheets/siwg.css">
+<% } %>
+</head>
+<body class="homePage">
 <%- include('./partials/nav') %>
 
-<main class="homePage">
+<main>
   <div class="container-lg py-3">
     <% if (user?.profile.avatar) { %>
       <div class="card shadow p-4 m-5 bg-body rounded" style="width: 19rem;">
