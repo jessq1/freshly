@@ -7,7 +7,23 @@
 #myFridge{
     background-image: url('/images/fridge/myFridge.svg');
     background-repeat: no-repeat;
-    width: 25rem;
+    background-origin:initial;
+    width: 27rem;
+}
+#fridge{
+    background-image: url('/images/fridge/myFridge_fridge.svg');
+    background-repeat: no-repeat;
+    background-origin:initial;
+    width: 27rem;
+}
+#freezer{
+    background-image: url('/images/fridge/myFridge_freezer.svg');
+    background-repeat: no-repeat;
+    background-origin:initial;
+    width: 27rem;
+}
+#btn-back{
+    float: left;
 }
 
 .btn-3d span{

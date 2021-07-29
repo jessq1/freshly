@@ -2,17 +2,18 @@
 <%- include('../partials/nav') %>
 
 <main>
-  <a href="/myfridge/<%=user.profile._id%>" class="m-1 btn btn-outline-warning"> << </a>
   <div class="container-lg pb-3">
     <div class="row">
       <div class="col-lg-8">
+        <a href="/myfridge/<%=user.profile._id%>" class="mt-3 btn-3d" id='btn-back'><span><<</span>  </a>
       <div class="row">
       <div class="col">
-        <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 26rem;">
-          <div style="height: 25rem;">
+        <div class="p-3 my-2 mx-auto" id="fridge">
+        <!-- <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 26rem;"> -->
+          <div style="height: 35rem;">
           </div>
-        <div style="height: 15rem;">
-          <a class="btn btn-outline-primary" href="/myfridge/<%= Profile._id %>/freezer ">Look into my Freezer</a>
+        <div class='pe-4'style="height: 5rem;">
+          <a class="btn-3d" href="/myfridge/<%= Profile._id %>/freezer "><span>Look into my Freezer</span> </a>
         </div>
       </div>
       </div>
