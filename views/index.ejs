@@ -5,7 +5,7 @@
   <div class="container-lg py-3">
     <% if (user?.profile.avatar) { %>
       <div class="card shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
-        <img src="<%= user.profile.avatar %>" class="card-img-top" alt="<%= user.profile.name %> avatar">
+        <img src="<%= user.profile.avatar %>" class="card-img-top rounded" alt="<%= user.profile.name %> avatar">
         <div class="card-body">
           <h3 class="titleText text-left">Hi <%= user.profile.name %> </h3>
           <p class="card-text text-left">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
