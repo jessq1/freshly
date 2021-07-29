@@ -17,12 +17,9 @@
   border-radius: 15px;
   border: 2px solid #000;
 }
-.btn-3d span:hover{
-    background:#105756
-}
 .btn-3d:hover {
   box-shadow: 0 2px 0 #000, 0 2px 0px 2px #015351;
-  color: #FFF;
+  color: #015351;
 }
 .btn-3d:active {
   top: 4px;

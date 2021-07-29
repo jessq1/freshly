@@ -4,17 +4,33 @@ This is a MEN Stack application for your fridge. No more spoiled food in your fr
 
 
 ## Getting Started
+1. __Deployed APP:__
+   https://freshly-fridge.herokuapp.com
+2. __Trello Board:__
+   https://trello.com/b/PVUDqixC/unit-2-project
+3. __ERD:__
+<img src="/public/images/readme/Unit-2-ERD%20-%20freshly.png" alt="ERD">
 
-__Description__
+4. __Wireframe:__
+<img src="/public/images/readme/Freshly-wireframe.jpg" alt="Wireframe">
 
 ## Screenshots
-<img src="" alt="">
 
 ## Technologies Used  
-
+1. HTML, CSS, JavaScript
+2. Node.js
+3. Express
+4. MongoDb, Mongoose
+5. Axios and Edamam API
+6. Bootstrap
+7. ejs
+8. Google OAuth and passport
+9. Adobe Illustrator
 
 ## Next Steps
-
+1. Refine mobile version
+2. Add search functionality in the food database
+3. Archive previous shopping lists
 
 ## References:  
 1. Food Storage Data from foodsafety.gov: https://www.foodsafety.gov/keep-food-safe

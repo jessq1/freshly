@@ -6,11 +6,12 @@ export {
 }
 
 const recipeSchema = new Schema({
-    label: String,
+  label: String,
   ingredientLines: [],
   image: String,
   imageUrl: String,
   shareAs:String,
+  cautions:String,
 },{
   timestamps: true,
 });
