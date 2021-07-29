@@ -47,7 +47,6 @@
   float: right;
   font: normal 18px/20px "Patrick Hand", sans-serif;
   margin-right: 2px;
-  /* text-transform: uppercase; */
   color: #000;
   text-decoration: none;
   padding-bottom: 3px;
@@ -67,4 +66,22 @@
     border: 0px;
     border-radius: 18px;
     transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+  }
+
+  .btn-2d:hover{
+    color: #FFF;
+    background-color: #015351;
+  }
+  .btn-2d:active{
+    top: 4px;
+    padding-bottom: 0px;
+    box-shadow: 0 1px 0 #000;
+  }
+  .btn-2d{
+    font: normal 18px/20px "Patrick Hand", sans-serif;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+    background-color: #FFF;
   }
