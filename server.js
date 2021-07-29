@@ -23,6 +23,8 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as foodRouter } from './routes/food.js'
 import { router as profileRouter } from './routes/profiles.js'
+// import { router as recipeRouter } from './routes/recipes.js'
+
 
 // view engine setup
 app.set(
@@ -66,6 +68,7 @@ app.use('/', indexRouter)
 app.use('/auth', authRouter)
 app.use('/food', foodRouter)
 app.use('/myfridge', profileRouter)
+// app.use('/recipe', recipeRouter)
 
 
 // catch 404 and forward to error handler

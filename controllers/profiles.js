@@ -1,4 +1,7 @@
 import { Profile } from '../models/profile.js'
+import { Recipe } from '../models/recipe.js'
+
+import axios from 'axios'
 
 export {
     show,
@@ -8,7 +11,8 @@ export {
     submitList,
     removeFromFridge,
     editFridge,
-    updateFridge
+    updateFridge,
+    search,
 }
 
 function editFridge(req,res) {
@@ -79,20 +83,49 @@ function removeFromFridge(req,res){
     });
   }
 
-  function showFridge(req, res) {
+  function search(req, res) {
     let today = new Date()
     today.setUTCHours(0,0,0,0)
     Profile.findById(req.params.id, function(err, Profile) {
-      Profile.fridgeFood.forEach((food) => {
+      axios.get(`https://api.edamam.com/search?q=${req.body.search}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=2`)
+    .then(response => {
+        Profile.fridgeFood.forEach((food) => {
           food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
       })
       Profile.freezerFood.forEach((food) => {
         food.freshness=((((today-food.purchaseDate)/86400000)/(food.freezeM*30+food.freezeW*7+food.freezeD))*100).toFixed()
       })
-      res.render('fridge/showFridge', {
-        Profile: Profile,
-        title: 'My Fridge'
+        res.render('fridge/showFridge', {
+          Profile: Profile,
+          result: response.data.hits,
+          title: 'My Fridge',
+        })
       })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/')
+      })
+    })
+  }
+
+  function showFridge(req, res) {
+    let today = new Date()
+    today.setUTCHours(0,0,0,0)
+    Profile.findById(req.params.id, function(err, Profile) {
+      axios.get(`https://api.edamam.com/search?q=${Profile.fridgeFood[0].name}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=2`)
+      .then(response => {
+          Profile.fridgeFood.forEach((food) => {
+            food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
+        })
+        Profile.freezerFood.forEach((food) => {
+          food.freshness=((((today-food.purchaseDate)/86400000)/(food.freezeM*30+food.freezeW*7+food.freezeD))*100).toFixed()
+        })
+          res.render('fridge/showFridge', {
+            Profile: Profile,
+            result: response.data.hits,
+            title: 'My Fridge',
+          })
+        })
     })
   }
   
@@ -165,11 +198,4 @@ function removeFromFridge(req,res){
     } else {
       res.redirect(`/myfridge/${profile._id}/list`)
     }
-
-    // Profile.findById(req.params.id, function(err, profile) {
-    //   profile.food.push(req.body)
-    //   profile.save(function(err) {
-    //     res.redirect(`/myfridge/${profile._id}/list`)
-    //   })
-    // })
   }

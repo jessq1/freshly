@@ -16,6 +16,8 @@ router.delete('/:id/fridge', isLoggedIn, profileCtrl.removeFromFridge)
 router.get('/:id/fridge/edit', isLoggedIn, profileCtrl.editFridge)
 router.put('/:id/fridge', isLoggedIn, profileCtrl.updateFridge)
 
+router.post('/:id/search', isLoggedIn, profileCtrl.search)
+
 
 
 function isLoggedIn(req, res, next) {
