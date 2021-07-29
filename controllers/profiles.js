@@ -12,6 +12,7 @@ export {
     editFridge,
     updateFridge,
     searchFridge,
+    searchFreezer,
 }
 
 function editFridge(req,res) {
@@ -127,20 +128,48 @@ function removeFromFridge(req,res){
         })
     })
   }
-  
-  function showFreezer(req, res) {
+
+  function searchFreezer(req, res) {
     let today = new Date()
     today.setUTCHours(0,0,0,0)
     Profile.findById(req.params.id, function(err, Profile) {
-      Profile.fridgeFood.forEach((food) => {
+      axios.get(`https://api.edamam.com/search?q=${req.body.search}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=3`)
+    .then(response => {
+        Profile.fridgeFood.forEach((food) => {
           food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
       })
       Profile.freezerFood.forEach((food) => {
         food.freshness=((((today-food.purchaseDate)/86400000)/(food.freezeM*30+food.freezeW*7+food.freezeD))*100).toFixed()
       })
-      res.render('fridge/showFreezer', {
-        Profile: Profile,
-        title: 'My Freezer'
+        res.render('fridge/showFreezer', {
+          Profile: Profile,
+          result: response.data.hits,
+          title: 'My Fridge',
+        })
+      })
+      .catch(err => {
+        console.log(err)
+        res.redirect('/')
+      })
+    })
+  }
+  function showFreezer(req, res) {
+    let today = new Date()
+    today.setUTCHours(0,0,0,0)
+    Profile.findById(req.params.id, function(err, Profile) {
+      axios.get(`https://api.edamam.com/search?q=${Profile.freezerFood[0].name}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=3`)
+      .then(response => {
+        Profile.fridgeFood.forEach((food) => {
+            food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
+        })
+        Profile.freezerFood.forEach((food) => {
+          food.freshness=((((today-food.purchaseDate)/86400000)/(food.freezeM*30+food.freezeW*7+food.freezeD))*100).toFixed()
+        })
+        res.render('fridge/showFreezer', {
+          Profile: Profile,
+          result: response.data.hits,
+          title: 'My Freezer'
+        })
       })
     })
   }

@@ -17,6 +17,7 @@ router.get('/:id/fridge/edit', isLoggedIn, profileCtrl.editFridge)
 router.put('/:id/fridge', isLoggedIn, profileCtrl.updateFridge)
 
 router.post('/:id/fridge', isLoggedIn, profileCtrl.searchFridge)
+router.post('/:id/freezer', isLoggedIn, profileCtrl.searchFreezer)
 
 
 
