@@ -87,7 +87,7 @@ function removeFromFridge(req,res){
     let today = new Date()
     today.setUTCHours(0,0,0,0)
     Profile.findById(req.params.id, function(err, Profile) {
-      axios.get(`https://api.edamam.com/search?q=${req.body.search}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=2`)
+      axios.get(`https://api.edamam.com/search?q=${req.body.search}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=3`)
     .then(response => {
         Profile.fridgeFood.forEach((food) => {
           food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
@@ -112,7 +112,7 @@ function removeFromFridge(req,res){
     let today = new Date()
     today.setUTCHours(0,0,0,0)
     Profile.findById(req.params.id, function(err, Profile) {
-      axios.get(`https://api.edamam.com/search?q=${Profile.fridgeFood[0].name}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=2`)
+      axios.get(`https://api.edamam.com/search?q=${Profile.fridgeFood[0].name}&app_id=${process.env.API_ID}&app_key=${process.env.API_KEY}&from=0&to=3`)
       .then(response => {
           Profile.fridgeFood.forEach((food) => {
             food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()

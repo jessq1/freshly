@@ -109,15 +109,19 @@
   <div class="col-lg-4">
     <div>
 
-  <div class="card shadow p-3 mx-auto bg-body rounded">
-    <div style="height: 20rem;">
-      <form action="/myfridge/<%=Profile._id%>/search" method="POST">
-        <input type="string" name='search' value='lettuce' hidden>
-        <button type='submit'>Search</button>
-    </form>
-    <div><%= result[0].recipe.label%> </div>
+      <% result.forEach((result) => { %> 
+  <div class="card shadow p-3 mb-3 mx-auto bg-body rounded">
+    <div >
+      <!-- <img src='<%= result.recipe.image %>' class='rounded mx-auto d-block' alt='<%= result.recipe.label %>' style="height: 10rem;"> -->
+    <h5 class='text-center'><%= result.recipe.label%> </h5>
+    <div><strong>Ingredients: </strong><%= result.recipe.ingredientLines%> </div>
+    <div><strong>Calories: </strong><%= Math.round(result.recipe.calories) %> </div>
+    <a href='<%= result.recipe.shareAs %>'>More Details</a>
+
   </div>
 </div>
+<%})%> 
+
 </div>
 </div>
 </div>
