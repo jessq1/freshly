@@ -8,7 +8,7 @@
       <h6 class="p-2 flex-grow-1 bd-highlight">Food Catalog</h6>
       <% if (user) { %>
         <h6 class="p-2 bd-highlight">Couldn't find your ingredient?</h6>
-        <a href="/food/new" class="p-2 ms-4 bd-highlight btn btn-outline-warning">ADD NEW FOOD DATA</a>
+        <a href="/food/new" class="btn-3d"><span>ADD NEW FOOD DATA</span> </a>
         <% } %>
       </div>
       
@@ -17,8 +17,19 @@
       <% food.forEach((food) => { %>
         <div class="col">
           <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 17rem;">
-            <a class="text-decoration-none text-end" href="/food/<%= food._id %>">•••</a>
-                <img src="/images/food/VEGETABLES/CHILLI.png" class="card-img-top" alt="Placeholder Img">
+            <div class="row">
+              <div class="col-8">
+                <% if (user) { %>
+                 <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
+                    <button class="btn-3d-left"><span>X</span></button>
+                  </form>
+                  <% } %>
+              </div>
+              <div class="col">
+            <a class="btn-3d-left" href="/food/<%= food._id %>"><span> ••• </span></a>
+          </div>
+        </div>
+                <img src="<%= food.img %>" class="card-img-top" alt="Placeholder Img">
                 <div class="card-body">
                   <h5 class="card-title text-center"><%= food.name  %> </h5>
                   <p class="mb-0 text-center">Fridge Time:</p>
@@ -26,9 +37,8 @@
                   <p class="mb-0 text-center">Freeze Time:</p>
                   <p class="mb-3 text-center"><%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></p>
                   <% if (user) { %>
-                    
-                      <a href="/food/<%= food._id %>/addtolist" class="btn btn-outline-primary">
-                        Add to My Shopping List
+                      <a href="/food/<%= food._id %>/addtolist" class="btn-3d">
+                        <span>Add to My Shopping List</span> 
                       </a>
                     <% } %>
                   </div>

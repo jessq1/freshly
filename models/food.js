@@ -45,6 +45,7 @@ const foodSchema = new Schema({
     },
     img: {
       type: String,
+      default:"/images/food/VEGETABLES/placeholder.png",
     },
   },{
     timestamps: true,
