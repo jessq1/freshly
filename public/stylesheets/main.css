@@ -1,7 +1,10 @@
 
 @import url("https://fonts.googleapis.com/css?family=Patrick+Hand");
 .homePage{
-    background-image: url();
+    background-image: url(https://cdn.dribbble.com/users/143350/screenshots/14052412/media/27ab3785352e64f357bc1608bae74361.png);
+    height: 100vh;
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .titleText{

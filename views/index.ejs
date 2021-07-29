@@ -4,7 +4,7 @@
 <main class="homePage">
   <div class="container-lg py-3">
     <% if (user?.profile.avatar) { %>
-      <div class="card shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
+      <div class="card shadow p-4 m-5 bg-body rounded" style="width: 19rem;">
         <img src="<%= user.profile.avatar %>" class="card-img-top rounded" alt="<%= user.profile.name %> avatar">
         <div class="card-body">
           <h3 class="titleText text-left">Hi <%= user.profile.name %> </h3>
@@ -14,7 +14,7 @@
         </div>
       </div>
     <% } else {%>
-    <div class="card shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
+    <div class="card shadow p-4 m-5 bg-body rounded" style="width: 19rem;">
       <img src="/images/food/VEGETABLES/LEEK.png" class="card-img-top" alt="...">
       <div class="card-body">
         <h3 class="titleText text-left">Welcome to Freshly</h3>
