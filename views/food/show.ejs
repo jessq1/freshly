@@ -9,14 +9,14 @@
     <div class="card shadow p-3 mx-auto bg-body rounded" style="width: 22rem;">
       <% if (user) { %>
       <div class="row">
-        <div class="col-10">
+        <div class="col-9">
            <!-- <form action="/food/<%= food._id %>?_method=DELETE" method="POST">
               <button class="btn btn-outline-warning">X</button>
             </form> -->
             <a href="/food" class=" btn-3d" id='btn-back'><span><<</span>  </a>
         </div>
         <div class="col">
-          <a class="text-decoration-none" href="/food/<%= food._id %>/edit">Edit</a>
+          <a class="btn-3d" href="/food/<%= food._id %>/edit"><span>Edit</span></a>
         </div>
       </div>
       <% } %>
@@ -30,8 +30,8 @@
         <p class="mb-3 text-center"><%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></p>
       </div>
         <% if (user) { %>
-          <a class="btn btn-outline-primary text-decoration-none text-center" href="/food/<%= food._id %>/addtolist" >
-            Add to My Shopping List</a>
+          <a class="btn-3d m-3 mx-5 text-center" href="/food/<%= food._id %>/addtolist" >
+            <span>Add to My Shopping List</span> </a>
             <% } %>
   </div>
   </div>

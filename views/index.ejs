@@ -7,19 +7,18 @@
       <div class="card shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
         <img src="<%= user.profile.avatar %>" class="card-img-top" alt="<%= user.profile.name %> avatar">
         <div class="card-body">
-          <h5 class="card-title text-center">Hi <%= user.profile.name %> </h5>
-          <p class="card-text text-center">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="/myfridge/<%=user.profile._id%>" class="btn btn-outline-warning  d-flex justify-content-center">
-            <!-- <img src="/images/food/VEGETABLES/LEEK.png" alt=""> -->
-            My Fridge</a>
+          <h3 class="titleText text-left">Hi <%= user.profile.name %> </h3>
+          <p class="card-text text-left">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="/myfridge/<%=user.profile._id%>" class="btn-3d">
+           <span>CHECK MY FRIDGE</span></a>
         </div>
       </div>
     <% } else {%>
     <div class="card shadow p-3 m-5 bg-body rounded" style="width: 18rem;">
       <img src="/images/food/VEGETABLES/LEEK.png" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title text-center">Welcome to Freshly</h5>
-        <p class="card-text text-center">Freshly is a Web Application that keeps track of the food in your fridge. No more spoiled food in your fridge!  </p>
+        <h3 class="titleText text-left">Welcome to Freshly</h3>
+        <p class="card-text text-left">Freshly is a Web Application that keeps track of the food in your fridge. No more spoiled food in your fridge!  </p>
         <a href="/auth/google" class="btn btn-outline-primary">
           <img src="/images/auth/google/btn_google_light_normal_ios.svg" alt="">
           Log in with Google</a>

@@ -47,6 +47,13 @@
     <div class="card shadow p-3 my-2 bg-body rounded"style="height: 40rem;">
       <div style="height: 35rem;">
         <h6 class="text-center">My Shopping List</h6>
+        <%if (Profile.list[Profile.list.length-1].food.length == 0){%>
+          <h6 class='text-center mt-3'>Nothing on my list yet.. </h6>
+          <div>
+          
+            <a href="/food" class="btn-3d"><span>Explore..</span></a>
+          </div>
+          <%} else {%>
         <table class="table my-3" id="list">
           <thead >
             <tr>
@@ -64,7 +71,7 @@
               <td><%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></td>
               <td>
                 <form action="/food/<%= food._id %>/addtolist?_method=DELETE" method="POST">
-                  <button class="btn-2d">X</button>
+                  <button class="btn-2d-del">X</button>
                 </form>
               </td>
         
@@ -72,6 +79,8 @@
             <% }) %>
           </tbody>
         </table>
+        <%}%>
+
       </div>
       <div style="height: 3rem;">
         <a class="btn-3d" href="/myfridge/<%= Profile._id %>/list "><span>Look into my List</span> </a>
