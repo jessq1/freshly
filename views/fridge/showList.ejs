@@ -9,58 +9,66 @@
     <div class="card shadow p-5 mx-auto bg-body rounded" >
       
 <!-- <p><%= profile.list[profile.list.length-1].food %> </p> -->
+<%if (profile.list[profile.list.length-1].food.length == 0){%>
+<h5>Nothing on my list yet.. </h5>
+<div>
 
-<table class="table my-3" id="list">
-  <thead >
-    <tr>
-      <th>FRIDGE</th>
-      <th>FREEZER</th>
-      <th>SERVINGS</th>
-      <th>ITEM</th>
-      <th>FRIDGE TIME</th>
-      <th>FREEZER TIME</th>
-      <th>PURCHASE DATE</th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% profile.list[profile.list.length-1].food.forEach((food, index) => {  %>
+  <a href="/food" class="link-warning">Explore..</a>
+</div>
+<%} else {%>
+  <table class="table my-3" id="list">
+    <thead >
       <tr>
-      <form class="shopListForms"action="/myfridge/<%= profile._id %>/myfood" method="POST" name="food_<%=index%>">
-      <td style="width: 3rem;"><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="true" aria-label="..." name="inFridge"></td>
-      <td style="width: 3rem;"><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="true" aria-label="..." name="inFreezer"></td>
-      <td style="width: 3rem;"><input type="number" class="form-control"  value="<%= food.servings %>" placeholder="1" name="servings"></td>
-      <td><input type="String" class="form-control"  value="<%= food.name %>" name="name" hidden><%= food.name %> </td>
-      <td> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> </td>
-      <td> <%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></td>
-      <td> 
-        <input type="Date" class="purchaseDate" name="purchaseDate"   id="purchaseDate" required>
-      </td>
-      <td>
-        <input type="String" class="form-control"  value="<%= food._id %>" name="foodId" hidden>
-        <input type="number" class="form-control"  value="<%= food.fridgeM %>" name="fridgeM" hidden>
-        <input type="number" class="form-control"  value="<%= food.fridgeW %>" name="fridgeW" hidden>
-        <input type="number" class="form-control"  value="<%= food.fridgeD %>" name="fridgeD" hidden>
-        <input type="number" class="form-control"  value="<%= food.freezeM %>" name="freezeM" hidden>
-        <input type="number" class="form-control"  value="<%= food.freezeW %>" name="freezeW" hidden>
-        <input type="number" class="form-control"  value="<%= food.freezeD %>" name="freezeD" hidden>
-        <button class="btn btn-outline-warning" type="submit">Submit</button>
+        <th>FRIDGE</th>
+        <th>FREEZER</th>
+        <th>SERVINGS</th>
+        <th>ITEM</th>
+        <th>FRIDGE TIME</th>
+        <th>FREEZER TIME</th>
+        <th>PURCHASE DATE</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% profile.list[profile.list.length-1].food.forEach((food, index) => {  %>
+        <tr>
+        <form class="shopListForms"action="/myfridge/<%= profile._id %>/myfood" method="POST" name="food_<%=index%>">
+        <td style="width: 3rem;"><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="true" aria-label="..." name="inFridge"></td>
+        <td style="width: 3rem;"><input class="form-check-input" type="checkbox" id="checkboxNoLabel" value="true" aria-label="..." name="inFreezer"></td>
+        <td style="width: 3rem;"><input type="number" class="form-control"  value="<%= food.servings %>" placeholder="1" name="servings"></td>
+        <td><input type="String" class="form-control"  value="<%= food.name %>" name="name" hidden><%= food.name %> </td>
+        <td> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> </td>
+        <td> <%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%></td>
+        <td> 
+          <input type="Date" class="purchaseDate" name="purchaseDate"   id="purchaseDate" required>
+        </td>
+        <td>
+          <input type="String" class="form-control"  value="<%= food._id %>" name="foodId" hidden>
+          <input type="number" class="form-control"  value="<%= food.fridgeM %>" name="fridgeM" hidden>
+          <input type="number" class="form-control"  value="<%= food.fridgeW %>" name="fridgeW" hidden>
+          <input type="number" class="form-control"  value="<%= food.fridgeD %>" name="fridgeD" hidden>
+          <input type="number" class="form-control"  value="<%= food.freezeM %>" name="freezeM" hidden>
+          <input type="number" class="form-control"  value="<%= food.freezeW %>" name="freezeW" hidden>
+          <input type="number" class="form-control"  value="<%= food.freezeD %>" name="freezeD" hidden>
+          <button class="btn btn-outline-warning" type="submit">Submit</button>
+  
+        </form>
+        </td>
+        <td> 
+            <form action="/food/<%= food._id %>/addtolist?_method=DELETE" method="POST">
+              <button class="btn btn-outline-danger">X</button>
+            </form>
+        </td>
+  
+      </tr>
+      <% }) %>
+    </tbody>
+  </table>
 
-      </form>
-      </td>
-      <td> 
-          <form action="/food/<%= food._id %>/addtolist?_method=DELETE" method="POST">
-            <button class="btn btn-outline-danger">X</button>
-          </form>
-      </td>
+  <%}%>
 
-    </tr>
-    <% }) %>
-  </tbody>
-</table>
-
-<button class="btn btn-outline-warning" id="submitForms">Submit</button>
+<!-- <button class="btn btn-outline-warning" id="submitForms">Submit</button> -->
 
         
   </div>
@@ -69,6 +77,6 @@
 
 </main>
 
-<script src="/javascripts/submitList.js"></script>
+<!-- <script src="/javascripts/submitList.js"></script> -->
 
 <%- include('../partials/footer') %>
