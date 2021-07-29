@@ -44,7 +44,7 @@
                             </form>
                         </div>
                         <div class="col">
-                          <form action="/myfridge/<%=Profile._id%>/search" method="POST">
+                          <form action="/myfridge/<%=Profile._id%>/fridge" method="POST">
                             <input type="string" name='search' value='<%= food.name %>' hidden>
                             <button type='submit'class="btn btn-outline-primary">Search</button>
                         </form>
@@ -81,7 +81,7 @@
                             </form>
                         </div>
                         <div class="col">
-                          <form action="/myfridge/<%=Profile._id%>/search" method="POST">
+                          <form action="/myfridge/<%=Profile._id%>/fridge" method="POST">
                             <input type="string" name='search' value='<%= food.name %>' hidden>
                             <button type='submit'class="btn btn-outline-primary">Search</button>
                         </form>
@@ -115,7 +115,7 @@
       <!-- <img src='<%= result.recipe.image %>' class='rounded mx-auto d-block' alt='<%= result.recipe.label %>' style="height: 10rem;"> -->
     <h5 class='text-center'><%= result.recipe.label%> </h5>
     <div><strong>Ingredients: </strong><%= result.recipe.ingredientLines%> </div>
-    <div><strong>Calories: </strong><%= Math.round(result.recipe.calories) %> </div>
+    <div><strong>cautions: </strong><%= result.recipe.cautions %> </div>
     <a href='<%= result.recipe.shareAs %>'>More Details</a>
 
   </div>

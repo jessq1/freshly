@@ -16,7 +16,7 @@ router.delete('/:id/fridge', isLoggedIn, profileCtrl.removeFromFridge)
 router.get('/:id/fridge/edit', isLoggedIn, profileCtrl.editFridge)
 router.put('/:id/fridge', isLoggedIn, profileCtrl.updateFridge)
 
-router.post('/:id/search', isLoggedIn, profileCtrl.search)
+router.post('/:id/fridge', isLoggedIn, profileCtrl.searchFridge)
 
 
 

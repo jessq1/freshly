@@ -1,5 +1,4 @@
 import { Profile } from '../models/profile.js'
-import { Recipe } from '../models/recipe.js'
 
 import axios from 'axios'
 
@@ -12,7 +11,7 @@ export {
     removeFromFridge,
     editFridge,
     updateFridge,
-    search,
+    searchFridge,
 }
 
 function editFridge(req,res) {
@@ -83,7 +82,7 @@ function removeFromFridge(req,res){
     });
   }
 
-  function search(req, res) {
+  function searchFridge(req, res) {
     let today = new Date()
     today.setUTCHours(0,0,0,0)
     Profile.findById(req.params.id, function(err, Profile) {
