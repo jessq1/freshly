@@ -69,7 +69,7 @@
                 <div class="card card-body">
                     <strong>Servings: </strong> <%= food.servings %> <br>
                     <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
-                    <strong>Typical Fridge Storage Time: </strong> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> <br>
+                    <strong>Typical Freezer Storage Time: </strong> <%= (food.freezeM==0? "": food.freezeM + " Month ") + (food.freezeW==0? "": food.freezeW + " Week ") + (food.freezeD==0? "": food.freezeD + " Days")%> <br>
                   <div class="row mt-3">
                     <div class="col-2">
                       <form action="/myfridge/<%=Profile._id%>/freezer?_method=DELETE" method="POST">
@@ -122,5 +122,4 @@
 
 </main>
 
-<script src="/javascripts/showRecipe.js"></script>
 <%- include('../partials/footer') %>
