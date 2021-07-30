@@ -13,6 +13,20 @@ export {
     updateFridge,
     searchFridge,
     searchFreezer,
+    removeFromFreezer,
+    editFreezer,
+    updateFreezer,
+}
+function editFreezer(req,res) {
+  Profile.findById(req.params.id, function(err, profile) {
+    const foodItem = profile.freezerFood.id(req.query.id)
+    res.render('fridge/editFreezer', {
+      profile,
+      foodItem,
+      err,
+      title: "Edit Profile"
+    })
+  })
 }
 
 function editFridge(req,res) {
@@ -26,6 +40,19 @@ function editFridge(req,res) {
     })
   })
 }
+
+function updateFreezer(req,res) {
+  let fId=req.body.id
+  let fservings=req.body.servings
+  for (let key in req.body) {
+    if (req.body[key] === '') delete req.body[key]
+  }
+  Profile.findById(req.params.id, function(err,profile){
+    profile.freezerFood.id(fId).servings = fservings
+    profile.save(function(err) {
+    res.redirect(`/myfridge/${profile._id}/freezer/`)
+  })})
+} 
 
 function updateFridge(req,res) {
   let fId=req.body.id
@@ -42,6 +69,16 @@ function updateFridge(req,res) {
   })})
 }
 
+function removeFromFreezer(req,res){
+  const fId = req.body.id
+  Profile
+    .findById(req.params.id, function(err,profile){
+      profile.freezerFood.id(fId).remove();
+      profile.save(function(err) {
+        res.redirect(`/myfridge/${profile._id}/freezer`)
+      })
+    })
+}
 function removeFromFridge(req,res){
   const fId = req.body.id
   console.log(fId)
