@@ -1,5 +1,4 @@
 import { Profile } from '../models/profile.js'
-
 import axios from 'axios'
 
 export {
@@ -108,6 +107,8 @@ function removeFromFridge(req,res){
     })
     .exec(function(err, Profile){
       Profile.fridgeFood.forEach((food) => {
+        console.log(food.purchaseDate)
+        console.log(today)
         food.freshness=((((today-food.purchaseDate)/86400000)/(food.fridgeM*30+food.fridgeW*7+food.fridgeD))*100).toFixed()
       })
       Profile.freezerFood.forEach((food) => {
