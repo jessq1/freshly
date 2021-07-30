@@ -5,18 +5,6 @@ export {
   Profile
 }
 
-// const fridgeSchema = new Schema({
-//   food: [{type: Schema.Types.ObjectId, ref: 'Food'}]
-// }, {
-//   timestamps: true
-// });
-
-// const freezerSchema = new Schema({
-//   food: [{type: Schema.Types.ObjectId, ref: 'Food'}]
-// }, {
-//   timestamps: true
-// });
-
 const myFoodSchema = new Schema({
   name: {
     type: String,
