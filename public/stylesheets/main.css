@@ -99,6 +99,21 @@
     transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
     background-color: #FFF;
   }
+  .btn-toggle:hover{
+    color: #fff;
+    background-color: #4f990f;
+
+  }
+  .btn-toggle{
+    font: normal 18px/20px "Patrick Hand", sans-serif;
+    color: #000;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
+    background-color: #FFF;
+    margin: 5px;
+    padding: 5px;
+  }
 
   /* progressbar */
 .progressWrapper{
