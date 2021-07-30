@@ -15,10 +15,58 @@
       <div class="p-3 mx-auto" id="myFridge">
 
         <div class='p-4'style="height: 34rem;">
+          <%if(Profile.fridgeFood.length == 0){%>
+            <button type="button" class="btn-3d-left" data-bs-toggle="modal" data-bs-target="#exampleModal" style="float: right;">
+             <span>Look into my Fridge</span>
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Empty Fridge!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    It looks like you don't have any food in your firdge. Try to look around and add some ingredients!
+                  </div>
+                  <div class="modal-footer">
+                    <a href="/food" class="btn-3d"><span>Explore..</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%} else {%>
             <a class="btn-3d" href="/myfridge/<%= Profile._id %>/fridge "><span>Look into my Fridge</span></a>
-        </div>
+            <%}%>
+          </div>
         <div class='p-4'style="height: 6rem;">
+          <%if(Profile.freezerFood.length == 0){%>
+            <button type="button" class="btn-3d-left" data-bs-toggle="modal" data-bs-target="#exampleModal2" style="float: right;">
+             <span>Look into my Freezer</span>
+            </button>
+            
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Empty Freezer!</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                    It looks like you don't have any food in your freezer. Try to look around and add some ingredients!
+                  </div>
+                  <div class="modal-footer">
+                    <a href="/food" class="btn-3d"><span>Explore..</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <%} else {%>
           <a class="btn-3d" href="/myfridge/<%= Profile._id %>/freezer "><span>Look into my Freezer</span></a>
+          <%}%>
         </div>
       </div>
     </div>

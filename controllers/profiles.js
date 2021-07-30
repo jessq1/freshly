@@ -74,18 +74,25 @@ function removeFromFreezer(req,res){
     .findById(req.params.id, function(err,profile){
       profile.freezerFood.id(fId).remove();
       profile.save(function(err) {
-        res.redirect(`/myfridge/${profile._id}/freezer`)
+        if (profile.freezerFood.length == 0){
+          res.redirect(`/myfridge/${profile._id}`)
+        } else {
+          res.redirect(`/myfridge/${profile._id}/freezer`)
+        }
       })
     })
 }
 function removeFromFridge(req,res){
   const fId = req.body.id
-  console.log(fId)
   Profile
     .findById(req.params.id, function(err,profile){
       profile.fridgeFood.id(fId).remove();
       profile.save(function(err) {
-        res.redirect(`/myfridge/${profile._id}/fridge`)
+        if (profile.fridgeFood.length == 0){
+          res.redirect(`/myfridge/${profile._id}`)
+        } else {
+          res.redirect(`/myfridge/${profile._id}/fridge`)
+        }
       })
     })
 }
