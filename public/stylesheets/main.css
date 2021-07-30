@@ -99,3 +99,32 @@
     transition: padding 0.1s, box-shadow 0.1s, top 0.1s;
     background-color: #FFF;
   }
+
+  /* progressbar */
+.progressWrapper{
+    border-radius: 10px;
+    background-color: rgb(245, 245, 245);
+    height: 45px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.progressbar{
+    background-color: rgb(228, 228, 228);
+    border-radius: 18px;
+    height: 15px;
+}
+.prog-red{
+    background-color: #ca5148;
+    border-radius: 18px;
+    height: 15px;
+}
+.prog-yellow{
+    background-color: #ecc24d;
+    border-radius: 18px;
+    height: 15px;
+}
+.prog-green{
+    background-color: #85ca48;
+    border-radius: 18px;
+    height: 15px;
+}

@@ -26,18 +26,47 @@
     </div>
   
     <div class="col">
-      <div class="card shadow p-3 my-2 bg-body rounded  mx-auto" style="width: 15rem;">
+      <div class="p-3 my-2 mx-auto" style="width: 15rem;">
         <div id='body' style="height: 25rem;">
+          <h6 class="titleText">In Fridge:</h6>
           <% Profile.fridgeFood.forEach((food) => { %> 
+            <div class='progressWrapper'>
             <p class="mt-2 mb-0"> <%= food.name +" - "+food.freshness %>% </p>
-            <progress  max="100" value='<%= food.freshness %>'></progress>
-      
-          <% }) %>
-        </div>
+            <%if(food.freshness>80){%> 
+              <div class="progressbar">
+                <div class="prog-red" style="width:<%= food.freshness %>%"> &nbsp </div>
+                </div>
+              <%} else if(food.freshness>50) {%> 
+                <div class="progressbar">
+                  <div class="prog-yellow" style="width:<%= food.freshness %>%"> &nbsp </div>
+                  </div>
+                <%} else {%> 
+                  <div class="progressbar">
+                    <div class="prog-green" style="width:<%= food.freshness %>%"> &nbsp </div>
+                    </div>
+                  <%}%> 
+                </div>
+              <% }) %>
+            </div>
         <div style="height: 15rem;">
+          <h6 class="titleText">In Freezer:</h6>
           <% Profile.freezerFood.forEach((food) => { %> 
+            <div class='progressWrapper'>
             <p class="mt-2 mb-0"> <%= food.name +" - "+food.freshness %>% </p>
-            <progress  max="100" value='<%= food.freshness %>'></progress>
+            <%if(food.freshness>80){%> 
+              <div class="progressbar">
+                <div class="prog-red" style="width:<%= food.freshness %>%"> &nbsp </div>
+                </div>
+              <%} else if(food.freshness>50) {%> 
+                <div class="progressbar">
+                  <div class="prog-yellow" style="width:<%= food.freshness %>%"> &nbsp </div>
+                  </div>
+                <%} else {%> 
+                  <div class="progressbar">
+                    <div class="prog-green" style="width:<%= food.freshness %>%"> &nbsp </div>
+                    </div>
+                  <%}%> 
+                </div>
             <% }) %>
         </div>
       </div>
@@ -51,7 +80,7 @@
   <div>
     <div class="card shadow p-3 my-2 bg-body rounded"style="height: 40rem;">
       <div style="height: 35rem;">
-        <h6 class="text-center">My Shopping List</h6>
+        <h4 class="text-center titleText">My Shopping List</h4>
         <%if (Profile.list[Profile.list.length-1].food.length == 0){%>
           <h6 class='text-center mt-3'>Nothing on my list yet.. </h6>
           <div>

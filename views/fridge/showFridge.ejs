@@ -43,22 +43,22 @@
                       <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
                       <strong>Typical Fridge Storage Time: </strong> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> <br>
                       <div class="row mt-3">
-                        <div class="col-6">
+                        <div class="col-5">
                            <form action="/myfridge/<%=Profile._id%>/fridge?_method=DELETE" method="POST">
                             <input type="string" name='id' value='<%= food._id %>' hidden>
-                              <button class="btn btn-outline-danger">X</button>
+                              <button class="btn-2d-del">X</button>
                             </form>
                         </div>
                         <div class="col">
                           <form action="/myfridge/<%=Profile._id%>/fridge" method="POST">
                             <input type="string" name='search' value='<%= food.name %>' hidden>
-                            <button type='submit'class="btn btn-outline-primary">Search</button>
+                            <button type='submit'class="btn-2d">Search</button>
                         </form>
                         </div>
                         <div class="col">
                           <form action="/myfridge/<%= Profile._id %>/fridge/edit" method="GET">
                             <input type="string" name='id' value='<%= food._id %>' hidden>
-                              <button class="btn btn-outline-primary">Edit</button>
+                              <button class="btn-2d">Edit</button>
                             </form>
                         </div>
                       </div>
@@ -80,22 +80,22 @@
                         <strong>Purchased date: </strong> <%= food.purchaseDate.toLocaleDateString() %> <br>
                         <strong>Typical Fridge Storage Time: </strong> <%= (food.fridgeM==0? "": food.fridgeM + " Month ") + (food.fridgeW==0? "": food.fridgeW + " Week ") + (food.fridgeD==0? "": food.fridgeD + " Days")%> <br>
                       <div class="row mt-3">
-                        <div class="col-6">
+                        <div class="col-5">
                           <form action="/myfridge/<%=Profile._id%>/fridge?_method=DELETE" method="POST">
                             <input type="string" name='id' value='<%= food._id %>' hidden>
-                              <button class="btn btn-outline-danger">X</button>
+                              <button class="btn-2d-del">X</button>
                             </form>
                         </div>
                         <div class="col">
                           <form action="/myfridge/<%=Profile._id%>/fridge" method="POST">
                             <input type="string" name='search' value='<%= food.name %>' hidden>
-                            <button type='submit'class="btn btn-outline-primary">Search</button>
+                            <button type='submit'class="btn-2d">Search</button>
                         </form>
                         </div>
                         <div class="col">
                           <form action="/myfridge/<%= Profile._id %>/fridge/edit" method="GET">
                             <input type="string" name='id' value='<%= food._id %>' hidden>
-                              <button class="btn btn-outline-primary">Edit</button>
+                              <button class="btn-2d">Edit</button>
                             </form>                        
                           </div>
                       </div>  
